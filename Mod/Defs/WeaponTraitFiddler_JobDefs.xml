@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<WorkGiverDef>
+	    <defName>WeaponTraitFiddler_SalvageUpgrade</defName>
+	    <label>salvage preselected upgrade from a weapon</label>
+	    <giverClass>WeaponTraitFiddler.WorkGiver_SalvageUpgrade</giverClass>
+	    <workType>Crafting</workType>
+	    <verb>salvage</verb>
+	    <gerund>salvaging</gerund>
+	    <priorityInType>18</priorityInType>
+	    <requiredCapacities>
+	        <li>Manipulation</li>
+	    </requiredCapacities>
+    </WorkGiverDef>
+
+    <JobDef>
+	    <defName>WeaponTraitFiddler_SalvageUpgrade</defName>
+	    <driverClass>WeaponTraitFiddler.JobDriver_SalvageUpgrade</driverClass>
+	    <reportString>salvaging upgrade from TargetB.</reportString>
+	    <suspendable>true</suspendable>
+	    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
+
+    <WorkGiverDef>
+	    <defName>WeaponTraitFiddler_AddUpgrade</defName>
+	    <label>apply upgrade to a weapon</label>
+	    <giverClass>WeaponTraitFiddler.WorkGiver_AddUpgrade</giverClass>
+	    <workType>Crafting</workType>
+	    <verb>upgrade</verb>
+	    <gerund>upgrading</gerund>
+	    <priorityInType>18</priorityInType>
+	    <requiredCapacities>
+	        <li>Manipulation</li>
+	    </requiredCapacities>
+    </WorkGiverDef>
+
+    <JobDef>
+	    <defName>WeaponTraitFiddler_AddUpgrade</defName>
+	    <driverClass>WeaponTraitFiddler.JobDriver_AddUpgrade</driverClass>
+	    <reportString>upgrading TargetB.</reportString>
+	    <suspendable>true</suspendable>
+	    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
+    
+
+</Defs>

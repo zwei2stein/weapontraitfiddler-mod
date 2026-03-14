@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef/comps[li/@Class = 'CompProperties_UniqueWeapon']</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.CompProperties_UniqueWeaponCompanion" />
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef/comps[li/@Class = 'CompProperties_BladelinkWeapon']</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.CompProperties_BladelinkWeaponCompanion" />
+        </value>
+    </Operation>
+    
+</Patch>
