@@ -1,7 +1,7 @@
 
 # Weapon Traits Fiddler Mod for Rimworld
 
-Steam workshop link: <https://steamcommunity.com/sharedfiles/filedetails/?id=TODO>
+Steam workshop link: <https://steamcommunity.com/sharedfiles/filedetails/?id=3685045952>
 
 ## Quick about
 
