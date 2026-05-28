@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using RimWorld;
 using Verse;
 
@@ -15,6 +16,13 @@ namespace WeaponTraitFiddler
             "Sighted", "BurstFire", "BeamWeapon", "BulletFiring", "PelletFiring", "Bow", "PulseCharge", "Scoped",
             "Attachable", "LowStoppingPower", "Ranged", "Pistol", "Rifle", "Shotgun", "Gun", "BladeLink"
         };
+
+        private static readonly List<String> TL_Neolithic = new List<string> { "Bow" };
+        
+        private static readonly List<String> TL_Ultra = new List<string> { "BladeLink" };
+        
+        private static readonly List<String> TL_Industrial = new List<string> { "Sighted", "BurstFire", "BeamWeapon", "BulletFiring", "PelletFiring", "PulseCharge", "Scoped",
+            "Attachable", "LowStoppingPower", "Ranged", "Pistol", "Rifle", "Shotgun", "Gun" };
 
         public static IEnumerable<ThingDef> ImpliedWeaponUpgradeDefs(bool hotReload = false)
         {
@@ -41,6 +49,18 @@ namespace WeaponTraitFiddler
                     texPathSuffix = "_" + weaponTraitDef.weaponCategory.defName;
                 else
                     Log.Message("[Weapon Trait Fiddler] Weapon category without item icon: " + weaponTraitDef.weaponCategory.defName + ", using default.");
+
+                if (TL_Neolithic.Contains(weaponTraitDef.weaponCategory.defName))
+                    def.techLevel = TechLevel.Neolithic;
+                else if (TL_Ultra.Contains(weaponTraitDef.weaponCategory.defName))
+                    def.techLevel = TechLevel.Ultra;
+                else if (TL_Industrial.Contains(weaponTraitDef.weaponCategory.defName))
+                    def.techLevel = TechLevel.Industrial;
+                else
+                {
+                    Log.Message("[Weapon Trait Fiddler] Weapon category without tech level definition: " + weaponTraitDef.weaponCategory.defName + ", using Industrial.");
+                    def.techLevel = TechLevel.Industrial;
+                }
 
                 def.graphicData = new GraphicData
                 {
@@ -75,7 +95,7 @@ namespace WeaponTraitFiddler
                 def.pathCost = 14;
                 def.drawGUIOverlay = true;
                 def.modContentPack = weaponTraitDef.modContentPack;
-                def.tradeTags = new List<string> { Tag };
+                def.tradeTags = new List<string> { Tag, "ExoticMisc" };
 
                 def.description =
                     "WeaponTraitFiddler_WeaponUpgrade_Desc".Translate(

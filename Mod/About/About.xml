@@ -21,6 +21,6 @@
             <displayName>Odyssey</displayName>
         </li>
     </modDependencies>
-    <modVersion>1.0</modVersion>
+    <modVersion>1.1</modVersion>
     <description>Salvage upgrades from odyssey unique weapons and modify weapons with salvaged upgrades.</description>
 </ModMetaData>
