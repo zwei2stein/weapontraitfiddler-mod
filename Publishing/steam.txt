@@ -39,9 +39,20 @@ Rules that prevent generating weird weapons are being observed thou - you can no
 
 [h2]Mod compatibility[/h2] 
 
+Adding to game should be safe, but removing is not, unless you destroy all upgrade items. Weapons are safe.
+
+[h3]Weapon trait mods[/h3]
+
 Will work with mods that add new traits or new unique weapon types.
 
-Adding to game should be safe, but removing is not. 
+[h3]Workbench mods[/h3]
+
+You can use any machining table from:
+
+[list]
+    [*]Small Furniture - https://steamcommunity.com/sharedfiles/filedetails/?id=3696700829
+    [*]Tiny Workbenchs (Continued) - https://steamcommunity.com/sharedfiles/filedetails/?id=2387981423
+[/list]
 
 [hr][/hr]
 

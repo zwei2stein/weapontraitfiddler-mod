@@ -29,12 +29,7 @@ namespace WeaponTraitFiddler
             else if (!pawn.CanReach((LocalTargetInfo)(Thing)t, PathEndMode.ClosestTouch, Danger.Some))
                 return null;
 
-            var tableMachining = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map,
-                ThingRequest.ForDef(WeaponTraitFiddlerUtils.GetWorkplaceThingDef()),
-                PathEndMode.InteractionCell,
-                TraverseParms.For(pawn, Danger.Some),
-                validator: (Predicate<Thing>)(thing =>
-                    !thing.IsForbidden(pawn) && pawn.CanReserve((LocalTargetInfo)thing)));
+            var tableMachining = WeaponTraitFiddlerUtils.GetBestWorkplace(pawn);
             if (tableMachining == null)
                 return null;
             

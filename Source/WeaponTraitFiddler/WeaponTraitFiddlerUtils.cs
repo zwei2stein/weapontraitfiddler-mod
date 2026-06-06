@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -6,17 +8,51 @@ namespace WeaponTraitFiddler
 {
     public static class WeaponTraitFiddlerUtils
     {
-
-        public static ThingDef GetWorkplaceThingDef()
+        
+        private static readonly List<string> WORPLACE_DEFS_MODED = new List<string>
         {
-            if (WeaponTraitFiddlerModSettings.requiresMachiningResearch)
+            // Mlie.TinyWorkbenchs:
+            "TWB_TableMachiningMini", 
+            // Xercaine.Furniture.Small:
+            "XER_SmallTableMachining",
+            "XER_MediumTableMachining"
+        };
+
+        public static IEnumerable<ThingDef> GetWorkplaceThingDef()
+        {
+            
+            yield return WeaponTraitFiddlerDefOf.TableMachining;
+
+            foreach (var thingDefName in WORPLACE_DEFS_MODED)
             {
-                return WeaponTraitFiddlerDefOf.TableMachining;
+                var def = DefDatabase<ThingDef>.GetNamed(thingDefName);
+                if (def != null) yield return def;
             }
-            else
+            
+            if (!WeaponTraitFiddlerModSettings.requiresMachiningResearch)
             {
-                return WeaponTraitFiddlerDefOf.CraftingSpot;
+                yield return WeaponTraitFiddlerDefOf.CraftingSpot;
             }
+        }
+
+        public static Thing GetBestWorkplace(Pawn selPawn)
+        {
+            
+            ThingRequest request = ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
+            List<ThingDef> workplaceDefs = new List<ThingDef>(GetWorkplaceThingDef());
+            
+            Log.Message("Workplacedefs: " + workplaceDefs.ToString());
+            
+            Predicate<Thing> validator = (thing) => workplaceDefs.Contains(thing.def)
+                                                    && !thing.IsForbidden(selPawn)
+                                                    && selPawn.CanReserve((LocalTargetInfo)thing);
+            
+            return GenClosest.ClosestThingReachable(selPawn.Position, selPawn.Map,
+                    request,
+                    PathEndMode.InteractionCell,
+                    TraverseParms.For(selPawn, Danger.Some),
+                    validator: validator);
+
         }
 
         public static string GetWorkplaceFailMessage()

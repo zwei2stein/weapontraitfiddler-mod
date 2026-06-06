@@ -170,22 +170,17 @@ namespace WeaponTraitFiddler
             if (!selPawn.CanReach((LocalTargetInfo)(Thing)closestComponent, PathEndMode.ClosestTouch, Danger.Some))
                 JobFailReason.Is((string)"CannotReach".Translate());
 
-            var workplace = GenClosest.ClosestThingReachable(selPawn.Position, selPawn.Map,
-                ThingRequest.ForDef(WeaponTraitFiddlerUtils.GetWorkplaceThingDef()),
-                PathEndMode.InteractionCell,
-                TraverseParms.For(selPawn, Danger.Some),
-                validator: (Predicate<Thing>)(thing =>
-                    !thing.IsForbidden(selPawn) && selPawn.CanReserve((LocalTargetInfo)thing)));
-            if (workplace == null)
+            var tableMachining = WeaponTraitFiddlerUtils.GetBestWorkplace(selPawn);
+            if (tableMachining == null)
             {
                 JobFailReason.Is(WeaponTraitFiddlerUtils.GetWorkplaceFailMessage().Translate());
             }
 
             Job job = null;
-            if (workplace != null)
+            if (tableMachining != null)
             {
                 job = JobMaker.MakeJob(WeaponTraitFiddlerDefOf.WeaponTraitFiddler_AddUpgrade);
-                job.targetA = (LocalTargetInfo)workplace;
+                job.targetA = (LocalTargetInfo)tableMachining;
                 job.targetB = (LocalTargetInfo)compUniqueWeaponCompanion.parent;
                 job.targetC = (LocalTargetInfo)closestComponent;
             }
@@ -240,12 +235,7 @@ namespace WeaponTraitFiddler
                          PathEndMode.ClosestTouch, Danger.Some))
                 JobFailReason.Is((string)"CannotReach".Translate());
             HaulAIUtility.PawnCanAutomaticallyHaul(selPawn, (Thing)compUniqueWeaponCompanion.parent, true);
-            var tableMachining = GenClosest.ClosestThingReachable(selPawn.Position, selPawn.Map,
-                ThingRequest.ForDef(WeaponTraitFiddlerUtils.GetWorkplaceThingDef()),
-                PathEndMode.InteractionCell,
-                TraverseParms.For(selPawn, Danger.Some),
-                validator: (Predicate<Thing>)(thing =>
-                    !thing.IsForbidden(selPawn) && selPawn.CanReserve((LocalTargetInfo)thing)));
+            var tableMachining = WeaponTraitFiddlerUtils.GetBestWorkplace(selPawn);
             if (tableMachining == null)
             {
                 JobFailReason.Is(WeaponTraitFiddlerUtils.GetWorkplaceFailMessage().Translate());
