@@ -59,9 +59,8 @@ namespace WeaponTraitFiddler
                 "WeaponTraitFiddlerSettings_requiresMachiningResearch_tooltip".Translate());
             
             WeaponTraitFiddlerModSettings.weaponTraitMaxCount = Mathf.RoundToInt(listingStandard.SliderLabeled(
-                "WeaponTraitFiddlerSettings_weaponTraitMaxCount".Translate() +
-                WeaponTraitFiddlerModSettings.weaponTraitMaxCount
-                , WeaponTraitFiddlerModSettings.weaponTraitMaxCount, 2f, 5f, 0.5f,
+                "WeaponTraitFiddlerSettings_weaponTraitMaxCount".Translate(WeaponTraitFiddlerModSettings.weaponTraitMaxCount.Named("COUNT")),
+                WeaponTraitFiddlerModSettings.weaponTraitMaxCount, 2f, 5f, 0.5f,
                 "WeaponTraitFiddlerSettings_weaponTraitMaxCount_tooltip".Translate()));
             
             listingStandard.Outdent(gapWidth);
@@ -85,9 +84,8 @@ namespace WeaponTraitFiddler
                 "WeaponTraitFiddlerSettings_personaWeaponsRequireShipComputerCoreResearch_tooltip".Translate());
             
             WeaponTraitFiddlerModSettings.personaWeaponsTraitMaxCount = Mathf.RoundToInt(listingStandard.SliderLabeled(
-                "WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount".Translate() +
-                WeaponTraitFiddlerModSettings.personaWeaponsTraitMaxCount
-                , WeaponTraitFiddlerModSettings.personaWeaponsTraitMaxCount, 1f, 4f, 0.5f,
+                "WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount".Translate(WeaponTraitFiddlerModSettings.personaWeaponsTraitMaxCount.Named("COUNT")),
+                WeaponTraitFiddlerModSettings.personaWeaponsTraitMaxCount, 1f, 4f, 0.5f,
                 "WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount_tooltip".Translate()));
             
             

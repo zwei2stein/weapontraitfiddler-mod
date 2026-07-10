@@ -4,58 +4,48 @@
     <WeaponTraitFiddlerModName>Weapon Trait Fiddler</WeaponTraitFiddlerModName>
 
     <WeaponTraitFiddler_UpgradeItemDescTrait>Trait</WeaponTraitFiddler_UpgradeItemDescTrait>
-             
+
     <WeaponTraitFiddler_SalvageTrait_label>Salvage upgrade</WeaponTraitFiddler_SalvageTrait_label>
     <WeaponTraitFiddler_SalvageTraitNameWeapon_label>Salvage upgrade ({TRAIT_label}) from {WEAPON_label}</WeaponTraitFiddler_SalvageTraitNameWeapon_label>
-    <WeaponTraitFiddler_SalvageTrait_desc>Removes given upgrade from this weapon, it can be reapplied to another unique weapon.</WeaponTraitFiddler_SalvageTrait_desc>
-    
+    <WeaponTraitFiddler_SalvageTrait_desc>Removes the given upgrade from this weapon. It can be reapplied to another unique weapon.</WeaponTraitFiddler_SalvageTrait_desc>
+
     <WeaponTraitFiddler_AddTrait_label>Modify with upgrade</WeaponTraitFiddler_AddTrait_label>
     <WeaponTraitFiddler_AddTraitNameWeapon_label>Modify {WEAPON_label} with {TRAIT_label}</WeaponTraitFiddler_AddTraitNameWeapon_label>
-    <WeaponTraitFiddler_AddTrait_desc>Adds previously salvaged upgrade to this weapon. If you want to replace existing upgrade, remove it first.</WeaponTraitFiddler_AddTrait_desc>
-
-<!--
-    <WeaponTraitFiddler_SalvageTraitCancel_label>Cancel salvage</WeaponTraitFiddler_SalvageTraitCancel_label>
-    <WeaponTraitFiddler_SalvageTraitCancel_desc>Cancel salvaging upgrade {TRAIT_label}</WeaponTraitFiddler_SalvageTraitCancel_desc>
-
-    <WeaponTraitFiddler_AddTraitCancel_label>Cancel modify</WeaponTraitFiddler_AddTraitCancel_label>
-    <WeaponTraitFiddler_AddTraitCancel_desc>Cancel applying upgrade {TRAIT_label}</WeaponTraitFiddler_AddTraitCancel_desc>
--->
+    <WeaponTraitFiddler_AddTrait_desc>Adds a previously salvaged upgrade to this weapon. If you want to replace an existing upgrade, remove it first.</WeaponTraitFiddler_AddTrait_desc>
 
     <WeaponTraitFiddler_WeaponUpgradeNotAvailable>No upgrades available for this weapon</WeaponTraitFiddler_WeaponUpgradeNotAvailable>
     <WeaponTraitFiddler_NoMachiningTable>No machining table available</WeaponTraitFiddler_NoMachiningTable>
     <WeaponTraitFiddler_NoCraftingSpot>No crafting spot available</WeaponTraitFiddler_NoCraftingSpot>
 
-    <WeaponTraitFiddler_pawnMessedUp>{PAWN_labelShort} has damaged {WEAPON_labelShort} by unskilled tinkering with it.</WeaponTraitFiddler_pawnMessedUp>
+    <WeaponTraitFiddler_pawnMessedUp>{PAWN_labelShort} has damaged {WEAPON_labelShort} through unskilled tinkering.</WeaponTraitFiddler_pawnMessedUp>
 
     <WeaponTraitFiddler_WeaponUpgrade_Label>weapon upgrade ({TRAIT_label})</WeaponTraitFiddler_WeaponUpgrade_Label>
-    <WeaponTraitFiddler_WeaponUpgrade_Desc>This is a weapon upgrade '{TRAIT_label}', it's category is {CATEGORY}.
-\nWeapon upgrade allow you to customize unique weapons, adding new features or remove pain points. Applying weapon upgrade is reversible, you can always remove it later.
-\nMain source of upgrades are salvaged weapons from bygone eras.</WeaponTraitFiddler_WeaponUpgrade_Desc>
-
-
+    <WeaponTraitFiddler_WeaponUpgrade_Desc>This is a weapon upgrade '{TRAIT_label}', its category is {CATEGORY}.
+\nA weapon upgrade allows you to customize unique weapons, adding new features or removing pain points. Applying a weapon upgrade is reversible; you can always remove it later.
+\nThe main source of upgrades is salvaged weapons from bygone eras.</WeaponTraitFiddler_WeaponUpgrade_Desc>
 
     <WeaponTraitFiddlerSettings_UniqueWeapons_label>Unique Weapons</WeaponTraitFiddlerSettings_UniqueWeapons_label>
 
     <WeaponTraitFiddlerSettings_requiresMachiningResearch>Requires Machining researched</WeaponTraitFiddlerSettings_requiresMachiningResearch>
-    <WeaponTraitFiddlerSettings_requiresMachiningResearch_tooltip>Applying / Salvaging weapon upgrades requires Machining research to be completed. Default: Yes.</WeaponTraitFiddlerSettings_requiresMachiningResearch_tooltip>
+    <WeaponTraitFiddlerSettings_requiresMachiningResearch_tooltip>Applying or salvaging weapon upgrades requires Machining research to be completed. Default: Yes.</WeaponTraitFiddlerSettings_requiresMachiningResearch_tooltip>
 
-    <WeaponTraitFiddlerSettings_weaponTraitMaxCount>Maximum amount of unique weapon upgrades: </WeaponTraitFiddlerSettings_weaponTraitMaxCount>
-    <WeaponTraitFiddlerSettings_weaponTraitMaxCount_tooltip>When adding new weapon upgrades, player can add up to this many upgrades. Does not affect unique weapons generation. Default is 3.</WeaponTraitFiddlerSettings_weaponTraitMaxCount_tooltip>
+    <WeaponTraitFiddlerSettings_weaponTraitMaxCount>Maximum amount of unique weapon upgrades: {COUNT}</WeaponTraitFiddlerSettings_weaponTraitMaxCount>
+    <WeaponTraitFiddlerSettings_weaponTraitMaxCount_tooltip>When adding new weapon upgrades, the player can add up to this many upgrades. This does not affect unique weapons generation. Default is 3.</WeaponTraitFiddlerSettings_weaponTraitMaxCount_tooltip>
 
     <WeaponTraitFiddlerSettings_PersonaWeapons_label>Persona Weapons</WeaponTraitFiddlerSettings_PersonaWeapons_label>
 
-    <WeaponTraitFiddlerSettings_personaWeaponsUpgradable>Persona Weapons are modifiable</WeaponTraitFiddlerSettings_personaWeaponsUpgradable>
-    <WeaponTraitFiddlerSettings_personaWeaponsUpgradable_tooltip>Persona weapons can have upgrades salvaged and upgrades applied. Default: Yes.</WeaponTraitFiddlerSettings_personaWeaponsUpgradable_tooltip>
+    <WeaponTraitFiddlerSettings_personaWeaponsUpgradable>Persona weapons are modifiable</WeaponTraitFiddlerSettings_personaWeaponsUpgradable>
+    <WeaponTraitFiddlerSettings_personaWeaponsUpgradable_tooltip>Persona weapons can have upgrades salvaged and applied. Default: Yes.</WeaponTraitFiddlerSettings_personaWeaponsUpgradable_tooltip>
 
     <WeaponTraitFiddlerSettings_personaWeaponsRequireShipComputerCoreResearch>Requires Machine Persuasion researched</WeaponTraitFiddlerSettings_personaWeaponsRequireShipComputerCoreResearch>
-    <WeaponTraitFiddlerSettings_personaWeaponsRequireShipComputerCoreResearch_tooltip>Applying / Salvaging weapon upgrades from persona weapons requires Machine Persuasion research to be completed. Note: this stacks with required machining research option. Default: Yes.</WeaponTraitFiddlerSettings_personaWeaponsRequireShipComputerCoreResearch_tooltip>
+    <WeaponTraitFiddlerSettings_personaWeaponsRequireShipComputerCoreResearch_tooltip>Applying or salvaging weapon upgrades from persona weapons requires Machine Persuasion research to be completed. Note: This stacks with the required Machining research option. Default: Yes.</WeaponTraitFiddlerSettings_personaWeaponsRequireShipComputerCoreResearch_tooltip>
 
-    <WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount>Maximum amount of persona weapon upgrades: </WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount>
-    <WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount_tooltip>When adding new weapon upgrades, player can add up to this many upgrades. Does not affect persona weapons generation. Default is 2.</WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount_tooltip>
+    <WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount>Maximum amount of persona weapon upgrades: {COUNT}</WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount>
+    <WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount_tooltip>When adding new weapon upgrades, the player can add up to this many upgrades. This does not affect persona weapons generation. Default is 2.</WeaponTraitFiddlerSettings_personaWeaponsTraitMaxCount_tooltip>
 
     <WeaponTraitFiddlerSettings_General_label>General</WeaponTraitFiddlerSettings_General_label>
 
     <WeaponTraitFiddlerSettings_weaponCanBeDamagedByOperation>Weapon can be damaged by unskilled fiddling</WeaponTraitFiddlerSettings_weaponCanBeDamagedByOperation>
-    <WeaponTraitFiddlerSettings_weaponCanBeDamagedByOperation_tooltip>Pawns with low skill have chance to damage weapon when applying or salvaging upgrade. Default: Yes.</WeaponTraitFiddlerSettings_weaponCanBeDamagedByOperation_tooltip>
-    
+    <WeaponTraitFiddlerSettings_weaponCanBeDamagedByOperation_tooltip>Pawns with low skill have a chance to damage a weapon when applying or salvaging an upgrade. Default: Yes.</WeaponTraitFiddlerSettings_weaponCanBeDamagedByOperation_tooltip>
+
 </LanguageData>

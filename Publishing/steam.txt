@@ -1,12 +1,12 @@
 [h1]Weapon Traits Fiddle[/h1]
 
-You defeated pirate leader and they dropped unique weapon. Legendary - awesome. But it has shoddy sights, is cumbersone and just does not have much going on. If only you could remove those shoddy sights and make it lightweight instead of cummbersome.
+You defeated a pirate leader and they dropped a unique weapon. Legendary - awesome. But it has shoddy sights, is cumbersome and just doesn't have much going on. If only you could remove those shoddy sights and make it lightweight instead of cumbersome.
 
-You got persona plasmasword, it has awesome traits, but your best mélee pawn is pyrophobic. What about transplating pesonality traits from this to that hammer over there.
+You have a persona plasmasword, it has awesome traits, but your best melee pawn is pyrophobic. What about transplanting personality traits from this weapon to that hammer over there.
 
-[h2]Features[/h2] 
+[h2]Features[/h2]
 
-This mod allows you to salvage traits from unique and persona weapons. And then add then to different weapon.
+This mod allows you to salvage traits from unique and persona weapons and then add them to a different weapon.
 
 [list]
     [*]New item type - weapon upgrade, acquired by salvaging from weapons.
@@ -17,29 +17,29 @@ This mod allows you to salvage traits from unique and persona weapons. And then 
 
 [h2]On getting upgrades[/h2]
 
-They are avaialable only from weapons that player acquires from doing Odyssey content or from persona weapons from Royalty.
+They are available only from weapons the player acquires through Odyssey content or from persona weapons from Royalty.
 
-They are not craftable, goal of this mod is to make finding even poor weapon good experience - base weapon is legendary? Get rid of maluses. Base weapon is bad? At least it has upgrades that can be used elsewhere.
+They are not craftable. The goal of this mod is to make finding even a poor weapon a good experience - base weapon is legendary? Get rid of maluses. Base weapon is bad? At least it has upgrades that can be used elsewhere.
 
-Note that by default, modifying weapon can damage it (20% of it happening with maximum 20% durability loss for pawn with 0 crafting, 1% change with 1% durability loss for pawn with 20 crafting). You can turn this off in settings, but if you run any repair or mend mod, it is suggested you leave this on.
+Note that by default, modifying a weapon can damage it (20% chance of it happening with a maximum 20% durability loss for a pawn with 0 crafting, 1% chance with 1% durability loss for a pawn with 20 crafting). You can turn this off in settings, but if you run any repair or mend mod, it's suggested you leave this on.
 
 [h2]Requirements[/h2]
 
-Machining needs to be researched to modify normal weapons, Machine Persuasion to modify persona weapons. You do need machining table for either.
+Machining needs to be researched to modify normal weapons, Machine Persuasion to modify persona weapons. You do need a machining table for either.
 
-If you turn off requirements for research, you can do either at crafting spot.
+If you turn off requirements for research, you can do either action at a crafting spot.
 
-[h2]On stacking[/h2] 
+[h2]On stacking[/h2]
 
-In vanilla, unique weapn can generate with maximum of three traits (and persona weapons with maximum of two traits). Mod will not change this, but you can up the amount of traits that can be installed.
+In vanilla, unique weapon can generate with a maximum of three traits (and persona weapons with a maximum of two traits). Mod will not change this, but you can up the amount of traits that can be installed.
 
-Rules that prevent generating weird weapons are being observed thou - you can not give weapon two scopes or have both tox and fire bullets.
+Rules that prevent generating weird weapons are being observed though - you cannot give a weapon two scopes or have both toxic and fire bullets.
 
 [hr][/hr]
 
-[h2]Mod compatibility[/h2] 
+[h2]Mod compatibility[/h2]
 
-Adding to game should be safe, but removing is not, unless you destroy all upgrade items. Weapons are safe.
+Adding this mod to your existing save should be safe, but removing it is not, unless you destroy all upgrade items. Weapons themselves are safe.
 
 [h3]Weapon trait mods[/h3]
 
@@ -56,12 +56,12 @@ You can use any machining table from:
 
 [hr][/hr]
 
-[url=https://github.com/zwei2stein/weapontraitfiddler-mod] source code [/url] 
+[url=https://github.com/zwei2stein/weapontraitfiddler-mod]Source Code[/url]
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3651274426] my other mods [/url] 
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3651274426]my other mods[/url]
 
 [hr][/hr]
 
 [h2]Thanks[/h2]
 
-A lot of thanks to rimworld modding discord for help.
+Many thanks to RimWorld Modding Discord for their help.
