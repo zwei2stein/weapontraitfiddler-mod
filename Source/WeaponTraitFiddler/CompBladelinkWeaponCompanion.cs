@@ -21,8 +21,7 @@ namespace WeaponTraitFiddler
         {
             return WeaponTraitFiddlerModSettings.personaWeaponsUpgradable 
                    && (!WeaponTraitFiddlerModSettings.personaWeaponsRequireShipComputerCoreResearch || WeaponTraitFiddlerDefOf.ShipComputerCore.IsFinished)
-                   && (!WeaponTraitFiddlerModSettings.requiresMachiningResearch || WeaponTraitFiddlerDefOf.Machining.IsFinished)
-                   || DebugSettings.godMode;
+                   && (!WeaponTraitFiddlerModSettings.requiresMachiningResearch || WeaponTraitFiddlerDefOf.Machining.IsFinished);
         }
 
         protected override List<WeaponTraitDef> TraitsListForReading()

@@ -96,7 +96,11 @@ namespace WeaponTraitFiddler
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
-            if (!FeatureEnabled()) yield break;
+            if (!FeatureEnabled())
+                yield break;
+            
+            if (!DebugSettings.godMode)
+                yield break;
             
             var traitCount = TraitsListForReading().Count;
 

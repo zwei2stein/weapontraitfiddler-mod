@@ -21,8 +21,7 @@ namespace WeaponTraitFiddler
         protected override bool FeatureEnabled()
         {
             return !WeaponTraitFiddlerModSettings.requiresMachiningResearch
-                   || WeaponTraitFiddlerDefOf.Machining.IsFinished
-                   || DebugSettings.godMode;
+                   || WeaponTraitFiddlerDefOf.Machining.IsFinished;
         }
 
         protected override List<WeaponTraitDef> TraitsListForReading()
