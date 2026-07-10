@@ -98,8 +98,6 @@ namespace WeaponTraitFiddler
         {
             if (!FeatureEnabled()) yield break;
             
-            if (!DebugSettings.godMode) yield break;
-
             var traitCount = TraitsListForReading().Count;
 
             // gizmo to salvage trait

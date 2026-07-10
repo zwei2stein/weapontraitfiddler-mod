@@ -10,7 +10,7 @@ namespace WeaponTraitFiddler
         
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
-            return base.ShouldSkip(pawn, forced) && (pawn.Faction != Faction.OfPlayer) && (!pawn.RaceProps.Humanlike);
+            return base.ShouldSkip(pawn, forced) || pawn.Faction != Faction.OfPlayer || !pawn.RaceProps.Humanlike;
         }
 
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)

@@ -25,6 +25,6 @@
         <li>Mlie.TinyWorkbenchs</li>
         <li>Xercaine.Furniture.Small</li>
     </loadAfter>
-    <modVersion>1.2.1</modVersion>
+    <modVersion>1.2.2</modVersion>
     <description>Salvage upgrades from Odyssey unique weapons and apply them to other weapons.</description>
 </ModMetaData>

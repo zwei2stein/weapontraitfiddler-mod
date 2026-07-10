@@ -9,7 +9,7 @@ namespace WeaponTraitFiddler
     {
         private static void Postfix(bool hotReload)
         {
-            Log.Message("generating things");
+            Log.Message("[WeaponTraitFiddler] generating weapon upgrade defs");
             
             WeaponTraitFiddlerMain.ImpliedWeaponUpgradeDefs.Clear();
             WeaponTraitFiddlerMain.MapTraitsToItems.Clear();

@@ -9,7 +9,7 @@ namespace WeaponTraitFiddler
     public static class WeaponTraitFiddlerUtils
     {
         
-        private static readonly List<string> WORPLACE_DEFS_MODED = new List<string>
+        private static readonly List<string> WORKPLACE_DEFS_MODED = new List<string>
         {
             // Mlie.TinyWorkbenchs:
             "TWB_TableMachiningMini", 
@@ -17,31 +17,38 @@ namespace WeaponTraitFiddler
             "XER_SmallTableMachining",
             "XER_MediumTableMachining"
         };
+        private static readonly List<ThingDef> moddedWorkplaceDefs = new List<ThingDef>();
 
+        static WeaponTraitFiddlerUtils()
+        {
+            // Pre-cache modded workplace ThingDefs ONCE at startup
+            foreach (var thingDefName in WORKPLACE_DEFS_MODED)
+            {
+                var def = DefDatabase<ThingDef>.GetNamed(thingDefName, false);
+                if (def != null)
+                    moddedWorkplaceDefs.Add(def);
+            }
+        }
+        
         public static IEnumerable<ThingDef> GetWorkplaceThingDef()
         {
-            
             yield return WeaponTraitFiddlerDefOf.TableMachining;
 
-            foreach (var thingDefName in WORPLACE_DEFS_MODED)
-            {
-                var def = DefDatabase<ThingDef>.GetNamed(thingDefName);
-                if (def != null) yield return def;
-            }
+            foreach (var thingDef in moddedWorkplaceDefs)
+                yield return thingDef;
             
             if (!WeaponTraitFiddlerModSettings.requiresMachiningResearch)
-            {
                 yield return WeaponTraitFiddlerDefOf.CraftingSpot;
-            }
         }
 
         public static Thing GetBestWorkplace(Pawn selPawn)
         {
+            if (selPawn == null) return null;
             
             ThingRequest request = ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
             List<ThingDef> workplaceDefs = new List<ThingDef>(GetWorkplaceThingDef());
             
-            Log.Message("Workplacedefs: " + workplaceDefs.ToString());
+            //Log.Message("Workplacedefs: " + workplaceDefs.ToString());
             
             Predicate<Thing> validator = (thing) => workplaceDefs.Contains(thing.def)
                                                     && !thing.IsForbidden(selPawn)
