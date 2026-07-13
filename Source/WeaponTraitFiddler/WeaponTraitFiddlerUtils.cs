@@ -104,7 +104,7 @@ namespace WeaponTraitFiddler
             if (comp.CanAddTrait(upgrade.trait))
             {
                 comp.AddTrait(upgrade.trait);
-                closestComponent.Destroy();
+                closestComponent.SplitOff(1).Destroy();
             }
 
             comp.traitToAdd = null;
