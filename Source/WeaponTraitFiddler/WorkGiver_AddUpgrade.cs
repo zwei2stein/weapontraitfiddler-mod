@@ -44,9 +44,8 @@ namespace WeaponTraitFiddler
 
             var job = JobMaker.MakeJob(WeaponTraitFiddlerDefOf.WeaponTraitFiddler_AddUpgrade);
             job.targetA = (LocalTargetInfo)tableMachining;
-            job.targetQueueB.Add((LocalTargetInfo) closestComponent);
-            job.targetQueueB.Add((LocalTargetInfo) compUniqueWeaponCompanion.parent);
-            job.targetC = (LocalTargetInfo)tableMachining.Position;
+            job.targetB = (LocalTargetInfo)compUniqueWeaponCompanion.parent;
+            job.targetC = (LocalTargetInfo)closestComponent;
             return job;
 
         }
