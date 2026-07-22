@@ -167,8 +167,6 @@ namespace WeaponTraitFiddler
                 PathEndMode.ClosestTouch,
                 TraverseParms.For(TraverseMode.PassDoors));
 
-            Log.Message(weaponUpgradeItemDef + " found as" + closestComponent);
-
             if (!selPawn.CanReach((LocalTargetInfo)(Thing)closestComponent, PathEndMode.ClosestTouch, Danger.Some))
                 JobFailReason.Is((string)"CannotReach".Translate());
 
