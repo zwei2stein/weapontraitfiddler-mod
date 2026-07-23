@@ -119,14 +119,14 @@ namespace WeaponTraitFiddler
 
             if (comp.traitToRemove == null) return;
 
-            var thing = ThingMaker.MakeThing(
+            var salvagedWeaponUpgrade = ThingMaker.MakeThing(
                 WeaponTraitFiddlerMain.MapTraitsToItems[comp.traitToRemove]);
             GenPlace.TryPlaceThing(
-                thing,
-                actor.Position,
-                actor.Map,
+                salvagedWeaponUpgrade,
+                weapon.Position,
+                weapon.Map,
                 ThingPlaceMode.Near);
-            
+
             comp.RemoveTrait(comp.traitToRemove);
 
             comp.traitToRemove = null;

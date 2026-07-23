@@ -21,10 +21,13 @@
             <displayName>Odyssey</displayName>
         </li>
     </modDependencies>
+    <loadBefore>
+        <li>ogre.ogrestack</li>
+    </loadBefore>
     <loadAfter>
         <li>Mlie.TinyWorkbenchs</li>
         <li>Xercaine.Furniture.Small</li>
     </loadAfter>
-    <modVersion>1.2.6</modVersion>
-    <description>Salvage upgrades from Odyssey unique weapons and apply them to other weapons.</description>
+    <modVersion>1.2.7</modVersion>
+    <description>Salvage upgrades from Odyssey unique weapons and Royalty persona weapons and apply them to other weapons.</description>
 </ModMetaData>
