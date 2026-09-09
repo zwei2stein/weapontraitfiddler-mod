@@ -1,13 +1,12 @@
-using System;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
 namespace WeaponTraitFiddler
 {
+    // This job is only activated manually by player interaction with item, pawn AI should never pick it up on its own
     public class WorkGiver_AddUpgrade : WorkGiver_Scanner
     {
-
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
         {
             return base.ShouldSkip(pawn, forced) || pawn.Faction != Faction.OfPlayer || !pawn.RaceProps.Humanlike;
@@ -47,8 +46,6 @@ namespace WeaponTraitFiddler
             job.targetB = (LocalTargetInfo)compUniqueWeaponCompanion.parent;
             job.targetC = (LocalTargetInfo)closestComponent;
             return job;
-
         }
-
     }
 }

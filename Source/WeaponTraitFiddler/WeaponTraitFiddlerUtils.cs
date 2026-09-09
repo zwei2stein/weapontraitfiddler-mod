@@ -74,65 +74,76 @@ namespace WeaponTraitFiddler
             }
         }
 
-        public static AbstractCompTraitCompanion GetComp(ThingWithComps weapon)
+        public static IEnumerable<AbstractCompTraitCompanion> GetComps(ThingWithComps weapon)
         {
             var compUniqueWeaponCompanion = weapon.TryGetComp<CompUniqueWeaponCompanion>();
             if (compUniqueWeaponCompanion != null)
-                return compUniqueWeaponCompanion;
-            
+                yield return compUniqueWeaponCompanion;
+
             var compBladelinkWeaponCompanion = weapon.TryGetComp<CompBladelinkWeaponCompanion>();
             if (compBladelinkWeaponCompanion != null)
-                return compBladelinkWeaponCompanion;
-            
-            return null;
+                yield return compBladelinkWeaponCompanion;
+
         }
         
-        public static void ApplyScheduledUpgrade(ThingWithComps weapon, Pawn actor)
+        public static void ApplyScheduledUpgrade(ThingWithComps weapon, Pawn actor, Thing upgradeItem = null)
         {
-            var comp = GetComp(weapon);
-            
-            if (comp.traitToAdd == null) return;
-
-            var closestComponent = GenClosest.ClosestThing_Global_Reachable(
-                weapon.Position,
-                weapon.Map,
-                weapon.Map.listerThings.ThingsMatching(ThingRequest.ForDef(comp.traitToAdd)),
-                PathEndMode.OnCell,
-                TraverseParms.For(TraverseMode.PassDoors));
-
-            var upgrade = closestComponent.def.GetCompProperties<CompProperties_WeaponUpgrade>();
-            if (comp.CanAddTrait(upgrade.trait))
+            foreach (var comp in GetComps(weapon))
             {
-                comp.AddTrait(upgrade.trait);
-                closestComponent.SplitOff(1).Destroy();
+                if (comp.traitToAdd == null) continue;
+
+                var closestComponent = upgradeItem;
+                if (closestComponent == null || closestComponent.Destroyed || !closestComponent.Spawned
+                    || closestComponent.def != comp.traitToAdd)
+                {
+                    closestComponent = GenClosest.ClosestThing_Global_Reachable(
+                        weapon.Position,
+                        weapon.Map,
+                        weapon.Map.listerThings.ThingsMatching(ThingRequest.ForDef(comp.traitToAdd)),
+                        PathEndMode.OnCell,
+                        TraverseParms.For(TraverseMode.PassDoors));
+                }
+
+                if (closestComponent == null)
+                {
+                    comp.traitToAdd = null;
+                    continue;
+                }
+
+                var upgrade = closestComponent.def.GetCompProperties<CompProperties_WeaponUpgrade>();
+                if (upgrade != null && comp.CanAddTrait(upgrade.trait))
+                {
+                    comp.AddTrait(upgrade.trait);
+                    closestComponent.SplitOff(1).Destroy();
+                    comp.traitToAdd = null;
+                    ProcessPawnActor(weapon, actor);
+                }
+                else
+                {
+                    comp.traitToAdd = null;
+                }
             }
-
-            comp.traitToAdd = null;
-
-            ProcessPawnActor(weapon, actor);
-
         }
 
         public static void SalvageScheduledUpgrade(ThingWithComps weapon, Pawn actor)
         {
-            AbstractCompTraitCompanion comp = GetComp(weapon);
+            foreach (var comp in GetComps(weapon))
+            {
+                if (comp.traitToRemove == null) continue;
 
-            if (comp.traitToRemove == null) return;
+                var salvagedWeaponUpgrade = ThingMaker.MakeThing(
+                    WeaponTraitFiddlerMain.MapTraitsToItems[comp.traitToRemove]);
+                GenPlace.TryPlaceThing(
+                    salvagedWeaponUpgrade,
+                    weapon.Position,
+                    weapon.Map,
+                    ThingPlaceMode.Near);
 
-            var salvagedWeaponUpgrade = ThingMaker.MakeThing(
-                WeaponTraitFiddlerMain.MapTraitsToItems[comp.traitToRemove]);
-            GenPlace.TryPlaceThing(
-                salvagedWeaponUpgrade,
-                weapon.Position,
-                weapon.Map,
-                ThingPlaceMode.Near);
+                comp.RemoveTrait(comp.traitToRemove);
+                comp.traitToRemove = null;
 
-            comp.RemoveTrait(comp.traitToRemove);
-
-            comp.traitToRemove = null;
-
-            ProcessPawnActor(weapon, actor);
-            
+                ProcessPawnActor(weapon, actor);
+            }
         }
         
         private static void ProcessPawnActor(ThingWithComps weapon, Pawn actor)

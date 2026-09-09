@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -46,6 +47,10 @@ namespace WeaponTraitFiddler
                 return;
 
             sibling.TraitsListForReading.Remove(weaponTraitDef);
+            //sibling.Setup(false);
+
+            // TODO: no real way to reclalculate after trait removal, may affect traits that give reloadable abilties
+            // Self corrects with game save-load.
         }
 
         public override void AddTrait(WeaponTraitDef weaponTraitDef)

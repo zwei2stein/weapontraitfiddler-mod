@@ -71,7 +71,7 @@ namespace WeaponTraitFiddler
             var toil = ToilMaker.MakeToil(nameof (MakeNewToils));
             toil.initAction = () =>
             {
-                WeaponTraitFiddlerUtils.ApplyScheduledUpgrade((ThingWithComps)Weapon, f.pawn);
+                WeaponTraitFiddlerUtils.ApplyScheduledUpgrade((ThingWithComps)Weapon, f.pawn, Upgrade);
             };
             toil.defaultCompleteMode = ToilCompleteMode.Instant;
             

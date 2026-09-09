@@ -104,7 +104,7 @@ namespace WeaponTraitFiddler
             
             var traitCount = TraitsListForReading().Count;
 
-            // gizmo to salvage trait
+            // DEBUG gizmo to instantly salvage trait without workbench/job
             if (traitCount > 0)
             {
                 var actionSalvageTrait = new Command_Action();
@@ -115,7 +115,7 @@ namespace WeaponTraitFiddler
                 yield return actionSalvageTrait;
             }
 
-            // gizmo to add trait
+            // DEBUG gizmo to instantly add trait without workbench/job
             if (traitCount < MaxTraitCount())
             {
                 var actionAddTrait = new Command_Action();
@@ -130,22 +130,13 @@ namespace WeaponTraitFiddler
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
         {
             if (!FeatureEnabled()) yield break;
-
-            var weaponCompanion = WeaponTraitFiddlerUtils.GetComp(this.parent);
-
-            if (weaponCompanion == null) yield break;
-
-            if (ModLister.CheckOdyssey("Unique Weapons"))
+            
+            foreach (var traitRemovalJobFloatMenuOption in CreateTraitRemovalJobFloatMenuOptions(selPawn, this))
+                yield return traitRemovalJobFloatMenuOption;
+            if (TraitsListForReading().Count < MaxTraitCount())
             {
-                foreach (var traitRemovalJobFloatMenuOption in CreateTraitRemovalJobFloatMenuOptions(selPawn,
-                             weaponCompanion))
-                    yield return traitRemovalJobFloatMenuOption;
-                if (weaponCompanion.TraitsListForReading().Count < MaxTraitCount())
-                {
-                    foreach (var traitAddJobFloatMenuOption in createTraitAddJobFloatMenuOptions(selPawn,
-                                 weaponCompanion))
-                        yield return traitAddJobFloatMenuOption;
-                }
+                foreach (var traitAddJobFloatMenuOption in createTraitAddJobFloatMenuOptions(selPawn, this))
+                    yield return traitAddJobFloatMenuOption;
             }
         }
 

@@ -6,7 +6,6 @@ namespace WeaponTraitFiddler
     [DefOf]
     public static class WeaponTraitFiddlerDefOf
     {
-        [MayRequireOdyssey]
         public static ThingCategoryDef WeaponTraitFiddler_WeaponUpgrades;
         
         public static ResearchProjectDef Machining;

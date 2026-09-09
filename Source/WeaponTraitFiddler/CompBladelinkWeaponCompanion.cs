@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -6,9 +8,14 @@ namespace WeaponTraitFiddler
 {
     public class CompBladelinkWeaponCompanion : AbstractCompTraitCompanion
     {
-        
         CompProperties_BladelinkWeaponCompanion Props => (CompProperties_BladelinkWeaponCompanion)props;
-        
+
+        // Reflect into the private CompBladelinkWeapon.CanAddTrait(WeaponTraitDef)
+        // TODO: When rimworld upgrades, see if it is still private.
+        private static readonly Func<CompBladelinkWeapon, WeaponTraitDef, bool> VanillaCanAddTrait =
+            AccessTools.MethodDelegate<Func<CompBladelinkWeapon, WeaponTraitDef, bool>>(
+                AccessTools.Method(typeof(CompBladelinkWeapon), "CanAddTrait", new[] { typeof(WeaponTraitDef) }));
+
         public override void PostExposeData()
         {
             base.PostExposeData();
@@ -37,20 +44,7 @@ namespace WeaponTraitFiddler
             if (!parent.TryGetComp<CompBladelinkWeapon>(out var sibling))
                 return false;
 
-            //private sibling.CanAddTrait(weaponTraitDef);
-            //copy implementation:
-            
-            if (weaponTraitDef.weaponCategory != WeaponCategoryDefOf.BladeLink)
-                return false;
-            if (!sibling.TraitsListForReading.NullOrEmpty<WeaponTraitDef>())
-            {
-                for (int index = 0; index < sibling.TraitsListForReading.Count; ++index)
-                {
-                    if (weaponTraitDef.Overlaps(sibling.TraitsListForReading[index]))
-                        return false;
-                }
-            }
-            return true;
+            return VanillaCanAddTrait(sibling, weaponTraitDef);
         }
 
         public override void RemoveTrait(WeaponTraitDef weaponTraitDef)

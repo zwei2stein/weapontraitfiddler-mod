@@ -5,6 +5,7 @@ using Verse.AI;
 
 namespace WeaponTraitFiddler
 {
+    // This job is only activated manually by player interaction with item, pawn AI should never pick it up on its own
     public class WorkGiver_SalvageUpgrade : WorkGiver_Scanner
     {
         
