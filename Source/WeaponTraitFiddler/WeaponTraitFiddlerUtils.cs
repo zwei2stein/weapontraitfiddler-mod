@@ -66,11 +66,11 @@ namespace WeaponTraitFiddler
         {
             if (WeaponTraitFiddlerModSettings.requiresMachiningResearch)
             {
-                return "WeaponTraitFiddler_NoMachiningTable";
+                return "WeaponTraitFiddler_NoMachiningTable".Translate();
             }
             else
             {
-                return "WeaponTraitFiddler_NoCraftingSpot";
+                return "WeaponTraitFiddler_NoCraftingSpot".Translate();
             }
         }
 

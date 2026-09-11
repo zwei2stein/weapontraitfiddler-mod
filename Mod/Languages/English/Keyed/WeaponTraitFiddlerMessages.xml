@@ -13,6 +13,7 @@
     <WeaponTraitFiddler_AddTraitNameWeapon_label>Modify {WEAPON_label} with {TRAIT_label}</WeaponTraitFiddler_AddTraitNameWeapon_label>
     <WeaponTraitFiddler_AddTrait_desc>Adds a previously salvaged upgrade to this weapon. If you want to replace an existing upgrade, remove it first.</WeaponTraitFiddler_AddTrait_desc>
 
+    <WeaponTraitFiddler_UnableToHaulWeapon>Unable to haul this weapon</WeaponTraitFiddler_UnableToHaulWeapon>
     <WeaponTraitFiddler_WeaponUpgradeNotAvailable>No upgrades available for this weapon</WeaponTraitFiddler_WeaponUpgradeNotAvailable>
     <WeaponTraitFiddler_NoMachiningTable>No machining table available</WeaponTraitFiddler_NoMachiningTable>
     <WeaponTraitFiddler_NoCraftingSpot>No crafting spot available</WeaponTraitFiddler_NoCraftingSpot>
