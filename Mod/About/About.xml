@@ -28,6 +28,6 @@
         <li>Mlie.TinyWorkbenchs</li>
         <li>Xercaine.Furniture.Small</li>
     </loadAfter>
-    <modVersion>1.2.7</modVersion>
+    <modVersion>1.3.0</modVersion>
     <description>Salvage upgrades from Odyssey unique weapons and Royalty persona weapons and apply them to other weapons.</description>
 </ModMetaData>
