@@ -20,7 +20,7 @@ namespace WeaponTraitFiddler
             if (!thingWithComps.TryGetComp<CompUniqueWeaponCompanion>(out var compUniqueWeaponCompanion))
                 return null;
 
-            if (compUniqueWeaponCompanion.traitToAdd == null)
+            if (compUniqueWeaponCompanion.upgradeItemToAdd == null)
                 return null;
 
             if (pawn.WorkTypeIsDisabled(WorkTypeDefOf.Crafting) || pawn.WorkTagIsDisabled(WorkTags.Crafting))
@@ -35,7 +35,7 @@ namespace WeaponTraitFiddler
             var closestComponent = GenClosest.ClosestThing_Global_Reachable(
                 compUniqueWeaponCompanion.parent.Position,
                 compUniqueWeaponCompanion.parent.Map,
-                compUniqueWeaponCompanion.parent.Map.listerThings.ThingsMatching(ThingRequest.ForDef(compUniqueWeaponCompanion.traitToAdd)),
+                compUniqueWeaponCompanion.parent.Map.listerThings.ThingsMatching(ThingRequest.ForDef(compUniqueWeaponCompanion.upgradeItemToAdd)),
                 PathEndMode.ClosestTouch,
                 TraverseParms.For(TraverseMode.PassDoors));
             if (closestComponent == null)

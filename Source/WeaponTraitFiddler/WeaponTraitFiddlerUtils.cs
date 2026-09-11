@@ -90,23 +90,23 @@ namespace WeaponTraitFiddler
         {
             foreach (var comp in GetComps(weapon))
             {
-                if (comp.traitToAdd == null) continue;
+                if (comp.upgradeItemToAdd == null) continue;
 
                 var closestComponent = upgradeItem;
                 if (closestComponent == null || closestComponent.Destroyed || !closestComponent.Spawned
-                    || closestComponent.def != comp.traitToAdd)
+                    || closestComponent.def != comp.upgradeItemToAdd)
                 {
                     closestComponent = GenClosest.ClosestThing_Global_Reachable(
                         weapon.Position,
                         weapon.Map,
-                        weapon.Map.listerThings.ThingsMatching(ThingRequest.ForDef(comp.traitToAdd)),
+                        weapon.Map.listerThings.ThingsMatching(ThingRequest.ForDef(comp.upgradeItemToAdd)),
                         PathEndMode.OnCell,
                         TraverseParms.For(TraverseMode.PassDoors));
                 }
 
                 if (closestComponent == null)
                 {
-                    comp.traitToAdd = null;
+                    comp.upgradeItemToAdd = null;
                     continue;
                 }
 
@@ -115,12 +115,12 @@ namespace WeaponTraitFiddler
                 {
                     comp.AddTrait(upgrade.trait);
                     closestComponent.SplitOff(1).Destroy();
-                    comp.traitToAdd = null;
+                    comp.upgradeItemToAdd = null;
                     ProcessPawnActor(weapon, actor);
                 }
                 else
                 {
-                    comp.traitToAdd = null;
+                    comp.upgradeItemToAdd = null;
                 }
             }
         }
@@ -129,18 +129,18 @@ namespace WeaponTraitFiddler
         {
             foreach (var comp in GetComps(weapon))
             {
-                if (comp.traitToRemove == null) continue;
+                if (comp.upgradeItemToRemove == null) continue;
 
                 var salvagedWeaponUpgrade = ThingMaker.MakeThing(
-                    WeaponTraitFiddlerMain.MapTraitsToItems[comp.traitToRemove]);
+                    WeaponTraitFiddlerMain.MapTraitsToItems[comp.upgradeItemToRemove]);
                 GenPlace.TryPlaceThing(
                     salvagedWeaponUpgrade,
                     weapon.Position,
                     weapon.Map,
                     ThingPlaceMode.Near);
 
-                comp.RemoveTrait(comp.traitToRemove);
-                comp.traitToRemove = null;
+                comp.RemoveTrait(comp.upgradeItemToRemove);
+                comp.upgradeItemToRemove = null;
 
                 ProcessPawnActor(weapon, actor);
             }

@@ -48,7 +48,7 @@ namespace WeaponTraitFiddler
                 if (TexturedWeaponCategory.Contains(weaponTraitDef.weaponCategory.defName))
                     texPathSuffix = "_" + weaponTraitDef.weaponCategory.defName;
                 else
-                    Log.Message("[Weapon Trait Fiddler] Weapon category without item icon: " + weaponTraitDef.weaponCategory.defName + ", using default.");
+                    Log.Warning("[Weapon Trait Fiddler] Weapon category without item icon: " + weaponTraitDef.weaponCategory.defName + ", using default.");
 
                 if (TL_Neolithic.Contains(weaponTraitDef.weaponCategory.defName))
                     def.techLevel = TechLevel.Neolithic;
@@ -58,7 +58,7 @@ namespace WeaponTraitFiddler
                     def.techLevel = TechLevel.Industrial;
                 else
                 {
-                    Log.Message("[Weapon Trait Fiddler] Weapon category without tech level definition: " + weaponTraitDef.weaponCategory.defName + ", using Industrial.");
+                    Log.Warning("[Weapon Trait Fiddler] Weapon category without tech level definition: " + weaponTraitDef.weaponCategory.defName + ", using Industrial.");
                     def.techLevel = TechLevel.Industrial;
                 }
 

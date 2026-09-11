@@ -15,9 +15,9 @@ namespace WeaponTraitFiddler
 
         private static readonly Texture2D AddTraitTexture = ContentFinder<Texture2D>.Get("UI/Commands/TraitAdd");
 
-        public ThingDef traitToAdd;
+        public ThingDef upgradeItemToAdd;
 
-        public WeaponTraitDef traitToRemove;
+        public WeaponTraitDef upgradeItemToRemove;
 
         protected abstract bool FeatureEnabled();
 
@@ -40,8 +40,8 @@ namespace WeaponTraitFiddler
                     () =>
                     {
                         //Log.Message("selected " + weaponTrait.label);
-                        traitToRemove = weaponTrait;
-                        traitToAdd = null;
+                        upgradeItemToRemove = weaponTrait;
+                        upgradeItemToAdd = null;
 
                         if (DebugSettings.godMode)
                             WeaponTraitFiddlerUtils.SalvageScheduledUpgrade(parent, null);
@@ -70,8 +70,8 @@ namespace WeaponTraitFiddler
                     () =>
                     {
                         //Log.Message("selected " + weaponUpgradeItemDef.label);
-                        traitToAdd = weaponUpgradeItemDef;
-                        traitToRemove = null;
+                        upgradeItemToAdd = weaponUpgradeItemDef;
+                        upgradeItemToRemove = null;
 
                         if (DebugSettings.godMode)
                             WeaponTraitFiddlerUtils.ApplyScheduledUpgrade(parent, null);
@@ -98,10 +98,10 @@ namespace WeaponTraitFiddler
         {
             if (!FeatureEnabled())
                 yield break;
-            
+
             if (!DebugSettings.godMode)
                 yield break;
-            
+
             var traitCount = TraitsListForReading().Count;
 
             // DEBUG gizmo to instantly salvage trait without workbench/job
@@ -130,12 +130,12 @@ namespace WeaponTraitFiddler
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
         {
             if (!FeatureEnabled()) yield break;
-            
-            foreach (var traitRemovalJobFloatMenuOption in CreateTraitRemovalJobFloatMenuOptions(selPawn, this))
+
+            foreach (var traitRemovalJobFloatMenuOption in CreateTraitRemovalJobFloatMenuOptions(selPawn))
                 yield return traitRemovalJobFloatMenuOption;
             if (TraitsListForReading().Count < MaxTraitCount())
             {
-                foreach (var traitAddJobFloatMenuOption in createTraitAddJobFloatMenuOptions(selPawn, this))
+                foreach (var traitAddJobFloatMenuOption in createTraitAddJobFloatMenuOptions(selPawn))
                     yield return traitAddJobFloatMenuOption;
             }
         }
@@ -144,11 +144,10 @@ namespace WeaponTraitFiddler
         {
             return new FloatMenuOption(
                 (string)("WeaponTraitFiddler_AddTrait_label".Translate() + ": " +
-                        reason.CapitalizeFirst()), (Action)null);
+                         reason.CapitalizeFirst()), (Action)null);
         }
 
-        private IEnumerable<FloatMenuOption> createTraitAddJobFloatMenuOptions(Pawn selPawn,
-            AbstractCompTraitCompanion compUniqueWeaponCompanion)
+        private IEnumerable<FloatMenuOption> createTraitAddJobFloatMenuOptions(Pawn selPawn)
         {
             if (selPawn.WorkTypeIsDisabled(WorkTypeDefOf.Crafting) || selPawn.WorkTagIsDisabled(WorkTags.Crafting))
             {
@@ -157,7 +156,7 @@ namespace WeaponTraitFiddler
                 yield break;
             }
 
-            if (!selPawn.CanReach((LocalTargetInfo)(Thing)compUniqueWeaponCompanion.parent,
+            if (!selPawn.CanReach((LocalTargetInfo)(Thing)parent,
                     PathEndMode.ClosestTouch, Danger.Some))
             {
                 yield return AddTraitFailMenuOption("CannotReach".Translate());
@@ -175,7 +174,7 @@ namespace WeaponTraitFiddler
             {
                 var comp = weaponUpgradeItemDef.GetCompProperties<CompProperties_WeaponUpgrade>();
                 if (comp == null) continue;
-                if (!compUniqueWeaponCompanion.CanAddTrait(comp.trait)) continue;
+                if (!CanAddTrait(comp.trait)) continue;
                 if (!parent.Map.listerThings.AnyThingWithDef(weaponUpgradeItemDef)) continue;
 
                 var closestComponent = GenClosest.ClosestThing_Global_Reachable(
@@ -189,31 +188,31 @@ namespace WeaponTraitFiddler
                     !selPawn.CanReach((LocalTargetInfo)closestComponent, PathEndMode.ClosestTouch, Danger.Some))
                 {
                     yield return new FloatMenuOption(
-                        (string)("WeaponTraitFiddler_AddTraitNameWeapon_label"
-                            .Translate(weaponUpgradeItemDef.Named("TRAIT"), compUniqueWeaponCompanion.parent.Named("WEAPON"))
-                            + ": " + "CannotReach".Translate().CapitalizeFirst()), (Action)null);
+                        ("WeaponTraitFiddler_AddTraitNameWeapon_label"
+                             .Translate(weaponUpgradeItemDef.Named("TRAIT"), parent.Named("WEAPON"))
+                         + ": " + "CannotReach".Translate().CapitalizeFirst()), (Action)null);
                     continue;
                 }
 
                 var job = JobMaker.MakeJob(WeaponTraitFiddlerDefOf.WeaponTraitFiddler_AddUpgrade);
                 job.targetA = (LocalTargetInfo)tableMachining;
-                job.targetB = (LocalTargetInfo)compUniqueWeaponCompanion.parent;
+                job.targetB = (LocalTargetInfo)parent;
                 job.targetC = (LocalTargetInfo)closestComponent;
 
                 yield return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(
-                        (string)"WeaponTraitFiddler_AddTraitNameWeapon_label"
+                        "WeaponTraitFiddler_AddTraitNameWeapon_label"
                             .Translate(weaponUpgradeItemDef.Named("TRAIT"),
-                                compUniqueWeaponCompanion.parent.Named("WEAPON")),
+                                parent.Named("WEAPON")),
                         (Action)(() =>
                         {
-                            compUniqueWeaponCompanion.traitToAdd = weaponUpgradeItemDef;
+                            upgradeItemToAdd = weaponUpgradeItemDef;
                             selPawn.jobs.TryTakeOrderedJob(job);
                         })),
                     selPawn,
-                    (LocalTargetInfo)(Thing)compUniqueWeaponCompanion.parent);
+                    (LocalTargetInfo)(Thing)parent);
             }
         }
-        
+
         private FloatMenuOption RemoveTraitFailMenuOption(string reason)
         {
             return new FloatMenuOption(
@@ -221,25 +220,24 @@ namespace WeaponTraitFiddler
                          reason.CapitalizeFirst()), (Action)null);
         }
 
-        private IEnumerable<FloatMenuOption> CreateTraitRemovalJobFloatMenuOptions(Pawn selPawn,
-            AbstractCompTraitCompanion compUniqueWeaponCompanion)
+        private IEnumerable<FloatMenuOption> CreateTraitRemovalJobFloatMenuOptions(Pawn selPawn)
         {
             JobFailReason.Clear();
 
             if (selPawn.WorkTypeIsDisabled(WorkTypeDefOf.Crafting) || selPawn.WorkTagIsDisabled(WorkTags.Crafting))
             {
-                yield return RemoveTraitFailMenuOption("WillNever".Translate((NamedArgument)"Crafting".TranslateSimple().UncapitalizeFirst()));
+                yield return RemoveTraitFailMenuOption(
+                    "WillNever".Translate((NamedArgument)"Crafting".TranslateSimple().UncapitalizeFirst()));
                 yield break;
             }
 
-            if (!selPawn.CanReach((LocalTargetInfo)(Thing)compUniqueWeaponCompanion.parent,
-                    PathEndMode.ClosestTouch, Danger.Some))
+            if (!selPawn.CanReach((LocalTargetInfo)(Thing)parent, PathEndMode.ClosestTouch, Danger.Some))
             {
                 yield return RemoveTraitFailMenuOption("CannotReach".Translate());
                 yield break;
             }
 
-            if (!HaulAIUtility.PawnCanAutomaticallyHaul(selPawn, (Thing)compUniqueWeaponCompanion.parent, true))
+            if (!HaulAIUtility.PawnCanAutomaticallyHaul(selPawn, parent, true))
             {
                 var reason = JobFailReason.HaveReason
                     ? JobFailReason.Reason
@@ -259,22 +257,22 @@ namespace WeaponTraitFiddler
 
             var job = JobMaker.MakeJob(WeaponTraitFiddlerDefOf.WeaponTraitFiddler_SalvageUpgrade);
             job.targetA = (LocalTargetInfo)tableMachining;
-            job.targetB = (LocalTargetInfo)compUniqueWeaponCompanion.parent;
+            job.targetB = (LocalTargetInfo)parent;
 
-            foreach (var traitToRemoveCandidate in compUniqueWeaponCompanion.TraitsListForReading())
+            foreach (var traitToRemoveCandidate in TraitsListForReading())
             {
                 yield return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(
                         "WeaponTraitFiddler_SalvageTraitNameWeapon_label"
                             .Translate(traitToRemoveCandidate.Named("TRAIT"),
-                                compUniqueWeaponCompanion.parent.Named("WEAPON")),
+                                parent.Named("WEAPON")),
                         (Action)(() =>
                         {
-                            compUniqueWeaponCompanion.traitToRemove = traitToRemoveCandidate;
-                            compUniqueWeaponCompanion.traitToAdd = null;
+                            upgradeItemToRemove = traitToRemoveCandidate;
+                            upgradeItemToAdd = null;
                             selPawn.jobs.TryTakeOrderedJob(job);
                         })),
                     selPawn,
-                    (LocalTargetInfo)(Thing)compUniqueWeaponCompanion.parent);
+                    (LocalTargetInfo)(Thing)parent);
             }
         }
     }

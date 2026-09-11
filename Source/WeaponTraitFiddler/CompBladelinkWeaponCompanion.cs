@@ -20,8 +20,8 @@ namespace WeaponTraitFiddler
         {
             base.PostExposeData();
 
-            Scribe_Defs.Look(ref traitToAdd, "traitToAdd");
-            Scribe_Defs.Look(ref traitToRemove, "traitToRemove");
+            Scribe_Defs.Look(ref upgradeItemToAdd, "traitToAdd");
+            Scribe_Defs.Look(ref upgradeItemToRemove, "traitToRemove");
         }
 
         protected override bool FeatureEnabled()

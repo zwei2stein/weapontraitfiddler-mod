@@ -13,11 +13,6 @@ namespace WeaponTraitFiddler
         public static readonly IDictionary<WeaponTraitDef, ThingDef> MapTraitsToItems =
             new Dictionary<WeaponTraitDef, ThingDef>();
 
-        static WeaponTraitFiddlerMain()
-        {
-            Log.Message("[WeaponTraitFiddler] loaded! " + ImpliedWeaponUpgradeDefs.Count +
-                        " unique upgrades generated fron traits.");
-        }
     }
 
     public class WeaponTraitFiddlerMod : Mod
