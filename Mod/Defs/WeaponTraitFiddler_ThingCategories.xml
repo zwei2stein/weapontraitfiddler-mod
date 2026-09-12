@@ -7,4 +7,16 @@
     <parent>WeaponsUnique</parent>
   </ThingCategoryDef>
 
+  <ThingCategoryDef>
+    <defName>WeaponTraitFiddler_WeaponUpgrades_Bladelink</defName>
+    <label>bladelink weapon upgrades</label>
+    <parent>WeaponTraitFiddler_WeaponUpgrades</parent>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>WeaponTraitFiddler_WeaponUpgrades_Unique</defName>
+    <label>unique weapon upgrades</label>
+    <parent>WeaponTraitFiddler_WeaponUpgrades</parent>
+  </ThingCategoryDef>
+
 </Defs>

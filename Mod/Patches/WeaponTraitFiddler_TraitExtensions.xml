@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="BladeLink"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Ultra</techLevel>
+                <texPathSuffix>_BladeLink</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Bladelink</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Bow"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Neolithic</techLevel>
+                <texPathSuffix>_Bow</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Gun"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Gun</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Pistol"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Pistol</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Rifle"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Rifle</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Shotgun"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Shotgun</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="BulletFiring"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_BulletFiring</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="PelletFiring"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_PelletFiring</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Sighted"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Sighted</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Scoped"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Scoped</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="BurstFire"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_BurstFire</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="PulseCharge"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_PulseCharge</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="BeamWeapon"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_BeamWeapon</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="LowStoppingPower"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_LowStoppingPower</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Ranged"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Ranged</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>/Defs/WeaponTraitDef[weaponCategory="Attachable"]</xpath>
+        <value>
+            <li Class="WeaponTraitFiddler.WeaponUpgradeExtension">
+                <techLevel>Industrial</techLevel>
+                <texPathSuffix>_Attachable</texPathSuffix>
+                <thingCategory>WeaponTraitFiddler_WeaponUpgrades_Unique</thingCategory>
+            </li>
+        </value>
+    </Operation>
+
+</Patch>

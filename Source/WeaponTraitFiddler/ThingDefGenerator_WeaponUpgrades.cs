@@ -5,23 +5,19 @@ using Verse;
 
 namespace WeaponTraitFiddler
 {
+    
+    public class WeaponUpgradeExtension : DefModExtension
+    {
+        public TechLevel? techLevel;
+        public string texPathSuffix;
+        public ThingCategoryDef thingCategory;
+    }
+    
     public static class ThingDefGenerator_WeaponUpgrades
     {
         private const string Tag = "WeaponTraitFiddler_WeaponUpgrade";
         private const int BaseMarketValue = 100;
-
-        private static readonly List<string> TexturedWeaponCategory = new List<string>
-        {
-            "Sighted", "BurstFire", "BeamWeapon", "BulletFiring", "PelletFiring", "Bow", "PulseCharge", "Scoped",
-            "Attachable", "LowStoppingPower", "Ranged", "Pistol", "Rifle", "Shotgun", "Gun", "BladeLink"
-        };
-
-        private static readonly List<String> TL_Neolithic = new List<string> { "Bow" };
-        
-        private static readonly List<String> TL_Ultra = new List<string> { "BladeLink" };
-        
-        private static readonly List<String> TL_Industrial = new List<string> { "Sighted", "BurstFire", "BeamWeapon", "BulletFiring", "PelletFiring", "PulseCharge", "Scoped",
-            "Attachable", "LowStoppingPower", "Ranged", "Pistol", "Rifle", "Shotgun", "Gun" };
+        private const TechLevel DefaultTechLevel = TechLevel.Industrial;
 
         public static IEnumerable<ThingDef> ImpliedWeaponUpgradeDefs(bool hotReload = false)
         {
@@ -40,32 +36,51 @@ namespace WeaponTraitFiddler
                 def.category = ThingCategory.Item;
                 def.thingClass = typeof(ThingWithComps);
 
-                def.thingCategories = new List<ThingCategoryDef>
-                    { WeaponTraitFiddlerDefOf.WeaponTraitFiddler_WeaponUpgrades };
-                
-                var texPathSuffix = "";
-                if (TexturedWeaponCategory.Contains(weaponTraitDef.weaponCategory.defName))
-                    texPathSuffix = "_" + weaponTraitDef.weaponCategory.defName;
-                else
-                    Log.Warning("[Weapon Trait Fiddler] Weapon category without item icon: " + weaponTraitDef.weaponCategory.defName + ", using default.");
+                var ext = weaponTraitDef.GetModExtension<WeaponUpgradeExtension>();
 
-                if (TL_Neolithic.Contains(weaponTraitDef.weaponCategory.defName))
-                    def.techLevel = TechLevel.Neolithic;
-                else if (TL_Ultra.Contains(weaponTraitDef.weaponCategory.defName))
-                    def.techLevel = TechLevel.Ultra;
-                else if (TL_Industrial.Contains(weaponTraitDef.weaponCategory.defName))
-                    def.techLevel = TechLevel.Industrial;
-                else
+                if (ext == null)
                 {
-                    Log.Warning("[Weapon Trait Fiddler] Weapon category without tech level definition: " + weaponTraitDef.weaponCategory.defName + ", using Industrial.");
-                    def.techLevel = TechLevel.Industrial;
+                    Log.Warning("[Weapon Trait Fiddler] No WeaponUpgradeExtension configured for trait " +
+                                weaponTraitDef.defName + "), using defaults.");
+                    def.techLevel = DefaultTechLevel;
+                    def.thingCategories = new List<ThingCategoryDef> { WeaponTraitFiddlerDefOf.WeaponTraitFiddler_WeaponUpgrades };
+                    def.graphicData = new GraphicData
+                    {
+                        graphicClass = typeof(Graphic_Single),
+                        texPath = $"Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade"
+                    };
                 }
-
-                def.graphicData = new GraphicData
+                else
                 {
-                    graphicClass = typeof(Graphic_Single),
-                    texPath = $"Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade{texPathSuffix}"
-                };
+                    var thingCategory = ext.thingCategory ?? WeaponTraitFiddlerDefOf.WeaponTraitFiddler_WeaponUpgrades;
+                    def.thingCategories = new List<ThingCategoryDef> { thingCategory };
+
+                    var texPathSuffix = "";
+                    if (!string.IsNullOrEmpty(ext.texPathSuffix))
+                    {
+                        texPathSuffix = ext.texPathSuffix;
+                    }
+                    else
+                    {
+                        Log.Warning("[Weapon Trait Fiddler] No texture configured for trait " +
+                                    weaponTraitDef.defName + " (category " + weaponTraitDef.weaponCategory.defName +
+                                    "), using default icon.");
+                    }
+
+                    def.techLevel = ext.techLevel ?? DefaultTechLevel;
+                    if (ext.techLevel == null)
+                    {
+                        Log.Warning("[Weapon Trait Fiddler] No tech level configured for trait " +
+                                    weaponTraitDef.defName + " (category " + weaponTraitDef.weaponCategory.defName +
+                                    "), using " + DefaultTechLevel + ".");
+                    }
+
+                    def.graphicData = new GraphicData
+                    {
+                        graphicClass = typeof(Graphic_Single),
+                        texPath = $"Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade{texPathSuffix}"
+                    };
+                }
 
                 def.useHitPoints = true;
                 def.selectable = true;
@@ -84,10 +99,7 @@ namespace WeaponTraitFiddler
 
                 def.altitudeLayer = AltitudeLayer.Item;
                 def.comps.Add(new CompProperties_Forbiddable());
-                def.comps.Add(new CompProperties_WeaponUpgrade
-                {
-                    trait = weaponTraitDef
-                });
+                def.comps.Add(new CompProperties_WeaponUpgrade { trait = weaponTraitDef });
 
                 def.tickerType = TickerType.Never;
                 def.alwaysHaulable = true;
@@ -101,8 +113,7 @@ namespace WeaponTraitFiddler
                     "WeaponTraitFiddler_WeaponUpgrade_Desc".Translate(
                         weaponTraitDef.Named("TRAIT"), weaponTraitDef.weaponCategory.defName.Named("CATEGORY")) + "\n\n" +
                     weaponTraitDef.LabelCap.Colorize(ColorLibrary.Yellow) + ":\n" + weaponTraitDef.description;
-                def.label = "WeaponTraitFiddler_WeaponUpgrade_Label".Translate(
-                    weaponTraitDef.Named("TRAIT"));
+                def.label = "WeaponTraitFiddler_WeaponUpgrade_Label".Translate(weaponTraitDef.Named("TRAIT"));
 
                 yield return def;
             }
