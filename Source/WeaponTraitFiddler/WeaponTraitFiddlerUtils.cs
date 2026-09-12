@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -61,6 +62,23 @@ namespace WeaponTraitFiddler
                     validator: validator);
 
         }
+        
+        public static bool ModifyCarriedThingDrawPosAtTable(ref Vector3 drawPos, ref bool flip, TargetIndex tableInd, JobDriver driver)
+        {
+            var pawn = driver.pawn;
+            if (pawn.pather.Moving)
+                return false;
+
+            if (pawn.carryTracker.CarriedThing == null)
+                return false;
+
+            var placeCell = driver.job.GetTarget(tableInd).Cell;
+            if (!placeCell.IsValid || !placeCell.AdjacentToCardinal(pawn.Position))
+                return false;
+
+            drawPos = new Vector3(placeCell.x + 0.5f, drawPos.y, placeCell.z + 0.5f);
+            return true;
+        }
 
         public static string GetWorkplaceFailMessage()
         {
@@ -97,9 +115,9 @@ namespace WeaponTraitFiddler
                     || closestComponent.def != comp.upgradeItemToAdd)
                 {
                     closestComponent = GenClosest.ClosestThing_Global_Reachable(
-                        weapon.Position,
-                        weapon.Map,
-                        weapon.Map.listerThings.ThingsMatching(ThingRequest.ForDef(comp.upgradeItemToAdd)),
+                        weapon.PositionHeld,
+                        weapon.MapHeld,
+                        weapon.MapHeld.listerThings.ThingsMatching(ThingRequest.ForDef(comp.upgradeItemToAdd)),
                         PathEndMode.OnCell,
                         TraverseParms.For(TraverseMode.PassDoors));
                 }
@@ -135,8 +153,8 @@ namespace WeaponTraitFiddler
                     WeaponTraitFiddlerMain.MapTraitsToItems[comp.upgradeItemToRemove]);
                 GenPlace.TryPlaceThing(
                     salvagedWeaponUpgrade,
-                    weapon.Position,
-                    weapon.Map,
+                    weapon.PositionHeld,
+                    weapon.MapHeld,
                     ThingPlaceMode.Near);
 
                 comp.RemoveTrait(comp.upgradeItemToRemove);

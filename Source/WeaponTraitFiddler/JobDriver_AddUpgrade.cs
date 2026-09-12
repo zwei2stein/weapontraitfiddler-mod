@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -46,7 +47,7 @@ namespace WeaponTraitFiddler
             
             yield return Toils_Goto.GotoThing(TableMachiningInd, PathEndMode.InteractionCell);
             
-            yield return Toils_Haul.DropCarriedThing();
+            yield return DropCarriedThingNear();
             
             yield return Toils_Goto
                 .GotoThing(WeaponInd, PathEndMode.ClosestTouch)
@@ -74,10 +75,36 @@ namespace WeaponTraitFiddler
             };
             toil.defaultCompleteMode = ToilCompleteMode.Instant;
             
-            yield return Toils_Haul.DropCarriedThing();
-            
             yield return toil;
+            
+            yield return Toils_Haul.DropCarriedThing();
 
+        }
+        
+        public override bool ModifyCarriedThingDrawPos(ref Vector3 drawPos, ref bool flip)
+        {
+            return WeaponTraitFiddlerUtils.ModifyCarriedThingDrawPosAtTable(ref drawPos, ref flip, TableMachiningInd, this);
+        }
+        
+        // This is custom toil so that job will not break when something is blocking interaction spot for workbench.
+        private Toil DropCarriedThingNear()
+        {
+            var toil = ToilMaker.MakeToil(nameof(DropCarriedThingNear));
+            toil.initAction = () =>
+            {
+                var actor = toil.actor;
+                if (actor.carryTracker.CarriedThing == null)
+                {
+                    Log.Error("[WeaponTraitFiddler] " + actor + " tried to drop carried thing but is not carrying anything.");
+                    return;
+                }
+                
+                if (actor.carryTracker.TryDropCarriedThing(actor.Position, ThingPlaceMode.Near, out Thing _))
+                    return;
+
+                actor.jobs.EndCurrentJob(JobCondition.Incompletable);
+            };
+            return toil;
         }
     }
 }
