@@ -39,11 +39,13 @@ Rules that prevent generating weird weapons are being observed though - you cann
 
 [h2]Mod compatibility[/h2]
 
-Adding this mod to your existing save should be safe, but removing it is not, unless you destroy all upgrade items. Weapons themselves are safe.
+Adding this mod to your existing save should be safe, but removing it is not, unless you destroy all upgrade items. Weapons themselves are safe to keep.
 
 [h3]Weapon trait mods[/h3]
 
 Will work with mods that add new traits or new unique weapon types.
+
+Mod authors can add their own trait icons and configure some details: see WeaponUpgradeExtension for WeaponTraitDef. But it is not necessary.
 
 [h3]Workbench mods[/h3]
 

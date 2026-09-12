@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- ========================================================= -->
+    <!-- CHILDHOOD BACKSTORIES                                     -->
+    <!-- ========================================================= -->
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_GunslingersChild</defName>
+        <identifier>WeaponTraitFiddler_GunslingersChild</identifier>
+        <slot>Childhood</slot>
+
+        <title>gunslinger's child</title>
+        <titleFemale>gunslinger's child</titleFemale>
+        <titleShort>gunslinger's son</titleShort>
+        <titleShortFemale>gunslinger's daughter</titleShortFemale>
+
+        <description>[PAWN_nameDef] was raised by a gunslinger who treated weapons with respect and practicality. [PAWN_possessive] parent never aimed a loaded weapon at anything that did not deserve to be destroyed.\n\n[PAWN_nameDef] learned to recognize firearms by sound and spent childhood helping to maintain weapons.</description>
+
+        <skillGains>
+            <Shooting>6</Shooting>
+            <Crafting>1</Crafting>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Shooting</li>
+            <li>Crafting</li>
+        </requiredWorkTags>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_QuickReload>1</WeaponTraitFiddler_WeaponUpgrade_QuickReload>
+            <WeaponTraitFiddler_WeaponUpgrade_StabilizerBrace>1</WeaponTraitFiddler_WeaponUpgrade_StabilizerBrace>
+        </possessions>
+
+        <spawnCategories>
+            <li>Child</li>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_GunsmithsChild</defName>
+        <identifier>WeaponTraitFiddler_GunsmithsChild</identifier>
+        <slot>Childhood</slot>
+
+        <title>gunsmith's child</title>
+        <titleFemale>gunsmith's child</titleFemale>
+        <titleShort>gunsmith's son</titleShort>
+        <titleShortFemale>gunsmith's daughter</titleShortFemale>
+
+        <description>[PAWN_nameDef] grew up in a gunsmith's workshop surrounded by gunpowder, barrels, and triggers. [PAWN_pronoun] learned early that a firearm was a machine to be understood and admired, not merely a weapon to be fired.</description>
+
+        <skillGains>
+            <Shooting>2</Shooting>
+            <Crafting>4</Crafting>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Crafting</li>
+            <li>Shooting</li>
+        </requiredWorkTags>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_CustomGrip>1</WeaponTraitFiddler_WeaponUpgrade_CustomGrip>
+            <WeaponTraitFiddler_WeaponUpgrade_ExtendedBarrel>1</WeaponTraitFiddler_WeaponUpgrade_ExtendedBarrel>
+        </possessions>
+
+        <spawnCategories>
+            <li>Child</li>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_RangeRat</defName>
+        <identifier>WeaponTraitFiddler_RangeRat</identifier>
+        <slot>Childhood</slot>
+
+        <title>range rat</title>
+        <titleFemale>range rat</titleFemale>
+        <titleShort>range rat</titleShort>
+        <titleShortFemale>range rat</titleShortFemale>
+
+        <description>[PAWN_nameDef] spent more time around the firing range than playing. [PAWN_pronoun] learned to shoot with whatever weapon was available and fix whichever one got broken by [PAWN_possessive] tinkering.</description>
+
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Crafting>3</Crafting>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Crafting</li>
+            <li>Shooting</li>
+        </requiredWorkTags>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_ImprovedSights>1</WeaponTraitFiddler_WeaponUpgrade_ImprovedSights>
+            <WeaponTraitFiddler_WeaponUpgrade_RapidFire>1</WeaponTraitFiddler_WeaponUpgrade_RapidFire>
+        </possessions>
+
+        <spawnCategories>
+            <li>Child</li>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+
+    <!-- ========================================================= -->
+    <!-- ADULTHOOD BACKSTORIES                                     -->
+    <!-- ========================================================= -->
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_Gunsmith</defName>
+        <identifier>WeaponTraitFiddler_Gunsmith</identifier>
+        <slot>Adulthood</slot>
+
+        <title>gunsmith</title>
+        <titleFemale>gunsmith</titleFemale>
+        <titleShort>gunsmith</titleShort>
+        <titleShortFemale>gunsmith</titleShortFemale>
+
+        <description>[PAWN_nameDef] trained under a master gunsmith and eventually became a journeyman, building, repairing, and modifying firearms independently. [PAWN_pronoun] knows every part of a weapon like his own body and can tell a good barrel from a bad one by licking it.</description>
+
+        <skillGains>
+            <Crafting>5</Crafting>
+            <Shooting>2</Shooting>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Crafting</li>
+            <li>Shooting</li>
+        </requiredWorkTags>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_PrecisionScope>1</WeaponTraitFiddler_WeaponUpgrade_PrecisionScope>
+            <WeaponTraitFiddler_WeaponUpgrade_OversizedRounds>1</WeaponTraitFiddler_WeaponUpgrade_OversizedRounds>
+        </possessions>
+
+        <spawnCategories>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_GunRunner</defName>
+        <identifier>WeaponTraitFiddler_GunRunner</identifier>
+        <slot>Adulthood</slot>
+
+        <title>gun runner</title>
+        <titleFemale>gun runner</titleFemale>
+        <titleShort>gun runner</titleShort>
+        <titleShortFemale>gun runner</titleShortFemale>
+
+        <description>[PAWN_nameDef] moved weapons across the Rim for people who preferred not to ask where they came from or where they were going.\n\n[PAWN_pronoun] learned to hide cargo, deal with dangerous customers, and use the merchandise when deals went bad.</description>
+
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Social>4</Social>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Shooting</li>
+            <li>Social</li>
+        </requiredWorkTags>
+
+        <workDisables>
+            <li>Cleaning</li>
+        </workDisables>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_HollowPointRounds>1</WeaponTraitFiddler_WeaponUpgrade_HollowPointRounds>
+            <WeaponTraitFiddler_WeaponUpgrade_ToxRounds>1</WeaponTraitFiddler_WeaponUpgrade_ToxRounds>
+        </possessions>
+
+        <forcedTraits>
+            <Greedy />
+        </forcedTraits>
+
+        <disallowedTraits>
+            <Wimp />
+        </disallowedTraits>
+
+        <spawnCategories>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_BallisticsExpert</defName>
+        <identifier>WeaponTraitFiddler_BallisticsExpert</identifier>
+        <slot>Adulthood</slot>
+
+        <title>ballistics expert</title>
+        <titleFemale>ballistics expert</titleFemale>
+        <titleShort>ballistician</titleShort>
+        <titleShortFemale>ballistician</titleShortFemale>
+
+        <description>[PAWN_nameDef] studied the science behind firearms rather than merely learning to fire them. [PAWN_pronoun] understands trajectories, propellants, impact, and the subtle differences between weapon design choices.</description>
+
+        <skillGains>
+            <Intellectual>4</Intellectual>
+            <Crafting>2</Crafting>
+            <Shooting>3</Shooting>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Intellectual</li>
+            <li>Crafting</li>
+            <li>Shooting</li>
+        </requiredWorkTags>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_HighPowerRounds>1</WeaponTraitFiddler_WeaponUpgrade_HighPowerRounds>
+            <WeaponTraitFiddler_WeaponUpgrade_PiercingRounds>1</WeaponTraitFiddler_WeaponUpgrade_PiercingRounds>
+        </possessions>
+
+        <disallowedTraits>
+            <Wimp />
+        </disallowedTraits>
+
+        <spawnCategories>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_PersonaWeaponSmith</defName>
+        <identifier>WeaponTraitFiddler_PersonaWeaponSmith</identifier>
+        <slot>Adulthood</slot>
+
+        <title>persona weaponsmith</title>
+        <titleFemale>persona weaponsmith</titleFemale>
+        <titleShort>weaponsmith</titleShort>
+        <titleShortFemale>weaponsmith</titleShortFemale>
+
+        <description>[PAWN_nameDef] trained as a bladesmith and material scientist, mastering the deadly fusion of mind and machine.\n\n[PAWN_pronoun] understood the persona core as intimately as any blade - as much a psychologist of the machine spirit as a craftsman of steel.</description>
+
+        <skillGains>
+            <Intellectual>2</Intellectual>
+            <Crafting>2</Crafting>
+            <Melee>3</Melee>
+            <Social>2</Social>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Intellectual</li>
+            <li>Violent</li>
+            <li>Crafting</li>
+        </requiredWorkTags>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_PsyfocusMeditationBonus>1</WeaponTraitFiddler_WeaponUpgrade_PsyfocusMeditationBonus>
+            <WeaponTraitFiddler_WeaponUpgrade_NeverBond>1</WeaponTraitFiddler_WeaponUpgrade_NeverBond>
+        </possessions>
+
+        <spawnCategories>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>WeaponTraitFiddler_PersonaWeaponSmithApprentice</defName>
+        <identifier>WeaponTraitFiddler_PersonaWeaponSmithApprentice</identifier>
+        <slot>Childhood</slot>
+
+        <title>persona weaponsmith's apprentice</title>
+        <titleFemale>persona weaponsmith's apprentice</titleFemale>
+        <titleShort>weaponsmith's apprentice</titleShort>
+        <titleShortFemale>weaponsmith's apprentice</titleShortFemale>
+
+        <description>[PAWN_nameDef] was apprenticed to a persona weaponsmith as a child, learning a wide array of skills ranging from persona core handling to swordfighting.</description>
+
+        <skillGains>
+            <Intellectual>2</Intellectual>
+            <Crafting>1</Crafting>
+            <Melee>1</Melee>
+            <Social>2</Social>
+        </skillGains>
+
+        <requiredWorkTags>
+            <li>Intellectual</li>
+            <li>Violent</li>
+            <li>Crafting</li>
+        </requiredWorkTags>
+
+        <possessions>
+            <WeaponTraitFiddler_WeaponUpgrade_PsychicSensitivityUpMinor>1</WeaponTraitFiddler_WeaponUpgrade_PsychicSensitivityUpMinor>
+            <WeaponTraitFiddler_WeaponUpgrade_ThoughtCalm>1</WeaponTraitFiddler_WeaponUpgrade_ThoughtCalm>
+        </possessions>
+
+        <spawnCategories>
+            <li>Child</li>
+            <li>Colonist</li>
+        </spawnCategories>
+
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+</Defs>
