@@ -31,8 +31,9 @@ namespace WeaponTraitFiddler
             var f = this;
             f.FailOnDespawnedNullOrForbidden<JobDriver_AddUpgrade>(TableMachiningInd);
             f.FailOnBurningImmobile<JobDriver_AddUpgrade>(TableMachiningInd);
-            
-            this.job.count = 2;
+
+            // Always exactly 1 upgrade item + 1 weapon, we are not decrementing counts.
+            this.job.count = 1;
             
             yield return Toils_Reserve.Reserve(WeaponInd);
             yield return Toils_Reserve.Reserve(UpgradeInd);
@@ -42,7 +43,7 @@ namespace WeaponTraitFiddler
                 .FailOnDespawnedNullOrForbidden<Toil>(UpgradeInd)
                 .FailOnSomeonePhysicallyInteracting<Toil>(UpgradeInd);
             yield return Toils_Haul
-                .StartCarryThing(UpgradeInd, subtractNumTakenFromJobCount: true)
+                .StartCarryThing(UpgradeInd, subtractNumTakenFromJobCount: false)
                 .FailOnDestroyedNullOrForbidden<Toil>(UpgradeInd);
             
             yield return Toils_Goto.GotoThing(TableMachiningInd, PathEndMode.InteractionCell);
@@ -54,7 +55,7 @@ namespace WeaponTraitFiddler
                 .FailOnDespawnedNullOrForbidden<Toil>(WeaponInd)
                 .FailOnSomeonePhysicallyInteracting<Toil>(WeaponInd);
             yield return Toils_Haul
-                .StartCarryThing(WeaponInd, subtractNumTakenFromJobCount: true)
+                .StartCarryThing(WeaponInd, subtractNumTakenFromJobCount: false)
                 .FailOnDestroyedNullOrForbidden<Toil>(WeaponInd);
             
             yield return Toils_Goto.GotoThing(TableMachiningInd, PathEndMode.InteractionCell);

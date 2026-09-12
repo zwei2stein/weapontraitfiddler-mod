@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using RimWorld;
 using Verse;
 
@@ -71,6 +70,7 @@ namespace WeaponTraitFiddler
                 def.useHitPoints = true;
                 def.selectable = true;
                 def.thingSetMakerTags = new List<string> { Tag };
+                def.stackLimit = 5;
                 def.SetStatBaseValue(StatDefOf.MaxHitPoints, 100f);
                 def.SetStatBaseValue(StatDefOf.Flammability, 0.5f);
                 def.SetStatBaseValue(StatDefOf.DeteriorationRate, 1f);
