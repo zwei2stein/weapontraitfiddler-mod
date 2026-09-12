@@ -1,3 +1,4 @@
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -26,6 +27,12 @@ namespace WeaponTraitFiddler
 
             Log.Message("[WeaponTraitFiddler] " + WeaponTraitFiddlerMain.ImpliedWeaponUpgradeDefs.Count +
                         " unique upgrades generated from traits.");
+
+            if (Prefs.DevMode)
+            {
+                Log.Message("[WeaponTraitFiddler] generated weapon upgrade defs: " +
+                            WeaponTraitFiddlerMain.ImpliedWeaponUpgradeDefs.Select(d => d.defName).ToLineList("  - "));
+            }
         }
     }
 }

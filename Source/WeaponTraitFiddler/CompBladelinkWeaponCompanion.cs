@@ -26,6 +26,9 @@ namespace WeaponTraitFiddler
 
         protected override bool FeatureEnabled()
         {
+            if (Prefs.DevMode && DebugSettings.godMode)
+                return true;
+            
             return WeaponTraitFiddlerModSettings.personaWeaponsUpgradable 
                    && (!WeaponTraitFiddlerModSettings.personaWeaponsRequireShipComputerCoreResearch || WeaponTraitFiddlerDefOf.ShipComputerCore.IsFinished)
                    && (!WeaponTraitFiddlerModSettings.requiresMachiningResearch || WeaponTraitFiddlerDefOf.Machining.IsFinished);

@@ -20,6 +20,9 @@ namespace WeaponTraitFiddler
         
         protected override bool FeatureEnabled()
         {
+            if (Prefs.DevMode && DebugSettings.godMode)
+                return true;
+            
             return !WeaponTraitFiddlerModSettings.requiresMachiningResearch
                    || WeaponTraitFiddlerDefOf.Machining.IsFinished;
         }
