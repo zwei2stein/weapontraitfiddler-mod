@@ -52,8 +52,9 @@ Mod authors can add their own trait icons and configure some details: see Weapon
 You can use any machining table from:
 
 [list]
-    [*]Small Furniture - https://steamcommunity.com/sharedfiles/filedetails/?id=3696700829
-    [*]Tiny Workbenchs (Continued) - https://steamcommunity.com/sharedfiles/filedetails/?id=2387981423
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3696700829]Small Furniture[/url]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2387981423]Tiny Workbenchs (Continued)[/url]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded - Chapter 1[/url]
 [/list]
 
 [hr][/hr]

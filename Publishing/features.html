@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=950">
+    <title>Weapon Trait Fiddler - Features</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            width: 950px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e0e0e0;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --rimworld-bg-dark: #1a1a1a;
+            --rimworld-bg-medium: #2a2a2a;
+            --rimworld-bg-light: #3a3a3a;
+            --rimworld-text-primary: #e0e0e0;
+            --rimworld-text-secondary: #a0a0a0;
+            --rimworld-text-muted: #6a6a6a;
+            --rimworld-accent-gold: #c0a062;
+            --rimworld-accent-blue: #6aa8c8;
+            --rimworld-accent-red: #c86a6a;
+            --rimworld-accent-green: #6ac86a;
+            --rimworld-border: #4a4a4a;
+            --rimworld-border-light: #5a5a5a;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background: var(--rimworld-bg-medium);
+            border-radius: 6px;
+            border: 1px solid var(--rimworld-border);
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 10px;
+            background: var(--rimworld-bg-light);
+            border-radius: 4px;
+            border: 1px solid var(--rimworld-border-light);
+        }
+
+        .icon-item img {
+            width: 64px;
+            height: 64px;
+            display: block;
+            margin: 0 auto 8px;
+            filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.8));
+        }
+
+        .icon-item .label {
+            font-size: 11px;
+            color: var(--rimworld-text-primary);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .actions-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            background: var(--rimworld-bg-medium);
+            border-radius: 6px;
+            border: 1px solid var(--rimworld-border);
+        }
+
+        .action-item {
+            text-align: center;
+        }
+
+        .action-item img {
+            width: 128px;
+            height: 128px;
+            display: block;
+            margin: 0 auto 12px;
+            filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
+        }
+
+        .action-item .label {
+            font-size: 16px;
+            color: var(--rimworld-accent-gold);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .action-item .desc {
+            font-size: 12px;
+            color: var(--rimworld-text-secondary);
+            line-height: 1.5;
+            max-width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="section">
+    <div class="actions-section">
+        <div class="action-item">
+            <img src="../../Mod/Textures/UI/Commands/TraitSalvage.png" alt="Salvage Upgrade">
+            <div class="label">Salvage Upgrade</div>
+            <div class="desc">Remove a trait from a unique or persona weapon to create a portable upgrade item</div>
+        </div>
+        <div class="action-item">
+            <img src="../../Mod/Textures/UI/Commands/TraitAdd.png" alt="Apply Upgrade">
+            <div class="label">Apply Upgrade</div>
+            <div class="desc">Add a salvaged trait to a unique or persona weapon</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="icon-grid">
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Attachable.png" alt="Attachable Weapon Upgrade">
+            <div class="label">Attachable</div>
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_BeamWeapon.png" alt="Beam Weapon Upgrade">
+            <div class="label">Beam Weapon</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_BladeLink.png" alt="BladeLink Upgrade">
+            <div class="label">BladeLink</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Bow.png" alt="Bow Upgrade">
+            <div class="label">Bow</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_BulletFiring.png" alt="Bullet Firing Upgrade">
+            <div class="label">Bullet Firing</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_BurstFire.png" alt="Burst Fire Upgrade">
+            <div class="label">Burst Fire</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Gun.png" alt="Gun Upgrade">
+            <div class="label">Gun</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_LowStoppingPower.png" alt="Low Stopping Power Upgrade">
+            <div class="label">Low Stopping Power</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_PelletFiring.png" alt="Pellet Firing Upgrade">
+            <div class="label">Pellet Firing</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Pistol.png" alt="Pistol Upgrade">
+            <div class="label">Pistol</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_PulseCharge.png" alt="Pulse Charge Upgrade">
+            <div class="label">Pulse Charge</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Ranged.png" alt="Ranged Upgrade">
+            <div class="label">Ranged</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Rifle.png" alt="Rifle Upgrade">
+            <div class="label">Rifle</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Scoped.png" alt="Scoped Upgrade">
+            <div class="label">Scoped</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Shotgun.png" alt="Shotgun Upgrade">
+            <div class="label">Shotgun</div>
+            
+        </div>
+        <div class="icon-item">
+            <img src="../../Mod/Textures/Things/Item/Special/WeaponTraitFiddler_WeaponUpgrade_Sighted.png" alt="Sighted Upgrade">
+            <div class="label">Sighted</div>
+            
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

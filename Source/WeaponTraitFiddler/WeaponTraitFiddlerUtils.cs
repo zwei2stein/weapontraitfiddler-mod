@@ -16,7 +16,9 @@ namespace WeaponTraitFiddler
             "TWB_TableMachiningMini", 
             // Xercaine.Furniture.Small:
             "XER_SmallTableMachining",
-            "XER_MediumTableMachining"
+            "XER_MediumTableMachining",
+            // vanillaexpanded.gravship:
+            "VGE_CompactMachiningTable"
         };
         private static readonly List<ThingDef> moddedWorkplaceDefs = new List<ThingDef>();
 
