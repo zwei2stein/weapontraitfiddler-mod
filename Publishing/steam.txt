@@ -57,6 +57,8 @@ You can use any machining table from:
     [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded - Chapter 1[/url]
 [/list]
 
+Adding more modded workbenches is easy, just add mod extension WeaponTraitFiddler.WeaponTraitFiddlerWorkbenchExtension to your workbench.
+
 [hr][/hr]
 
 [url=https://github.com/zwei2stein/weapontraitfiddler-mod]Source Code[/url]

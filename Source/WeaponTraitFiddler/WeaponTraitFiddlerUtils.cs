@@ -9,37 +9,32 @@ namespace WeaponTraitFiddler
 {
     public static class WeaponTraitFiddlerUtils
     {
+        private static List<ThingDef> extensionWorkplaceDefsCache;
         
-        private static readonly List<string> WORKPLACE_DEFS_MODED = new List<string>
+        private static List<ThingDef> ExtensionWorkplaceDefs
         {
-            // Mlie.TinyWorkbenchs:
-            "TWB_TableMachiningMini", 
-            // Xercaine.Furniture.Small:
-            "XER_SmallTableMachining",
-            "XER_MediumTableMachining",
-            // vanillaexpanded.gravship:
-            "VGE_CompactMachiningTable"
-        };
-        private static readonly List<ThingDef> moddedWorkplaceDefs = new List<ThingDef>();
-
-        static WeaponTraitFiddlerUtils()
-        {
-            // Pre-cache modded workplace ThingDefs ONCE at startup
-            foreach (var thingDefName in WORKPLACE_DEFS_MODED)
+            get
             {
-                var def = DefDatabase<ThingDef>.GetNamed(thingDefName, false);
-                if (def != null)
-                    moddedWorkplaceDefs.Add(def);
+                if (extensionWorkplaceDefsCache != null) return extensionWorkplaceDefsCache;
+                
+                extensionWorkplaceDefsCache = new List<ThingDef>();
+                foreach (var thingDef in DefDatabase<ThingDef>.AllDefsListForReading)
+                {
+                    if (thingDef.GetModExtension<WeaponTraitFiddlerWorkbenchExtension>() != null)
+                    {
+                        Log.Message("[WeaponTraitFiddler] " + thingDef.defName + " Recognized as a valid Machining Table for upgrading weapons.");
+                        extensionWorkplaceDefsCache.Add(thingDef);
+                    }
+                }
+                return extensionWorkplaceDefsCache;
             }
         }
-        
-        public static IEnumerable<ThingDef> GetWorkplaceThingDef()
-        {
-            yield return WeaponTraitFiddlerDefOf.TableMachining;
 
-            foreach (var thingDef in moddedWorkplaceDefs)
+        private static IEnumerable<ThingDef> GetWorkplaceThingDef()
+        {
+            foreach (var thingDef in ExtensionWorkplaceDefs)
                 yield return thingDef;
-            
+
             if (!WeaponTraitFiddlerModSettings.requiresMachiningResearch)
                 yield return WeaponTraitFiddlerDefOf.CraftingSpot;
         }
@@ -48,10 +43,8 @@ namespace WeaponTraitFiddler
         {
             if (selPawn == null) return null;
             
-            ThingRequest request = ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
-            List<ThingDef> workplaceDefs = new List<ThingDef>(GetWorkplaceThingDef());
-            
-            //Log.Message("Workplacedefs: " + workplaceDefs.ToString());
+            var request = ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
+            var workplaceDefs = new List<ThingDef>(GetWorkplaceThingDef());
             
             Predicate<Thing> validator = (thing) => workplaceDefs.Contains(thing.def)
                                                     && !thing.IsForbidden(selPawn)
@@ -94,7 +87,7 @@ namespace WeaponTraitFiddler
             }
         }
 
-        public static IEnumerable<AbstractCompTraitCompanion> GetComps(ThingWithComps weapon)
+        private static IEnumerable<AbstractCompTraitCompanion> GetComps(ThingWithComps weapon)
         {
             var compUniqueWeaponCompanion = weapon.TryGetComp<CompUniqueWeaponCompanion>();
             if (compUniqueWeaponCompanion != null)

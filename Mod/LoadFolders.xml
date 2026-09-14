@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+    <v1.6>
+        <li>/</li>
+        <li>1.6</li>
+
+        <li IfModActive="Mlie.TinyWorkbenchs">1.6/Compatibility/MlieTinyWorkbenchs</li>
+        <li IfModActive="Xercaine.Furniture.Small">1.6/Compatibility/XercaineFurnitureSmall</li>
+        <li IfModActive="vanillaexpanded.gravship">1.6/Compatibility/vanillaexpandedgravship</li>
+
+    </v1.6>
+</loadFolders>

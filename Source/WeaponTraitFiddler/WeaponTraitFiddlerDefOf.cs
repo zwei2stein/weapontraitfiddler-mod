@@ -12,8 +12,6 @@ namespace WeaponTraitFiddler
         
         public static ResearchProjectDef ShipComputerCore; //machine persuasion
         
-        public static ThingDef TableMachining;
-        
         public static ThingDef CraftingSpot;
 
         public static JobDef WeaponTraitFiddler_SalvageUpgrade;
