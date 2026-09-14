@@ -175,21 +175,34 @@ namespace WeaponTraitFiddler
                     if (Rand.Chance(failP))
                     {
                         var damage = GenMath.RoundRandom( (20f - actor.skills.GetSkill(SkillDefOf.Crafting).Level));
-                        weapon.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, damage));
-                        
-                        Messages.Message(
-                            "WeaponTraitFiddler_pawnMessedUp".Translate((NamedArgument)actor.LabelShort,
-                                    (NamedArgument)weapon.LabelCapNoCount, actor.Named("PAWN"), weapon.Named("WEAPON"))
-                                .CapitalizeFirst(), (LookTargets) (Thing) actor, MessageTypeDefOf.NegativeEvent);
+                        var actualDamage = ApplyClampedDeteriorationDamage(weapon, damage);
+
+                        if (actualDamage > 0)
+                        {
+                            Messages.Message(
+                                "WeaponTraitFiddler_pawnMessedUp".Translate((NamedArgument) actor.LabelShort,
+                                        (NamedArgument) weapon.LabelCapNoCount, actor.Named("PAWN"), weapon.Named("WEAPON"))
+                                    .CapitalizeFirst(), (Thing) actor, MessageTypeDefOf.NegativeEvent);
+                        }
                     }
                 }
-                
             }
-            else
-            {
-                if (WeaponTraitFiddlerModSettings.weaponCanBeDamagedByOperation)
-                    weapon.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1));
-            }
+        }
+        
+        //We are not evil, we are not destroying weapon, jusr make it very fragile it player overdoes fiddling.
+        private static int ApplyClampedDeteriorationDamage(ThingWithComps weapon, int rawDamage)
+        {
+            if (!weapon.def.useHitPoints)
+                return 0;
+
+            var maxApplicable = Mathf.Max(0, weapon.HitPoints - 1);
+            var actualDamage = Mathf.Min(rawDamage, maxApplicable);
+
+            if (actualDamage <= 0)
+                return 0;
+
+            weapon.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, actualDamage));
+            return actualDamage;
         }
     }
 }
