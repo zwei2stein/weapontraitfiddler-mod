@@ -67,8 +67,12 @@ namespace WeaponTraitFiddler
             if (pawn.carryTracker.CarriedThing == null)
                 return false;
 
-            var placeCell = driver.job.GetTarget(tableInd).Cell;
-            if (!placeCell.IsValid || !placeCell.AdjacentToCardinal(pawn.Position))
+            var table = driver.job.GetTarget(tableInd).Thing;
+            if (table == null || !table.Spawned)
+                return false;
+            
+            var placeCell = table.OccupiedRect().ClosestCellTo(pawn.Position);
+            if (!placeCell.AdjacentToCardinal(pawn.Position))
                 return false;
 
             drawPos = new Vector3(placeCell.x + 0.5f, drawPos.y, placeCell.z + 0.5f);
